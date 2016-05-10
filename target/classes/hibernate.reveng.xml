@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="register_of_public_association"/>
+  <table-filter match-name="third_level_of_location"/>
+  <table-filter match-name="public_association_has_kind"/>
+  <table-filter match-name="second_level_of_location"/>
+  <table-filter match-name="public_association_has_person"/>
+  <table-filter match-name="first_level_of_location"/>
+  <table-filter match-name="fourth_level_of_location"/>
+  <table-filter match-name="nationality"/>
+  <table-filter match-name="cause"/>
+  <table-filter match-name="person"/>
+  <table-filter match-name="public_association_has_statuse"/>
+  <table-filter match-name="admin"/>
+  <table-filter match-name="form_of_incorporation"/>
+  <table-filter match-name="kind"/>
+  <table-filter match-name="public_association"/>
+  <table-filter match-name="symbolic"/>
+  <table-filter match-name="termination_of_activity"/>
+  <table-filter match-name="enterprise"/>
+  <table-filter match-name="statuse"/>
+  <table-filter match-name="unit_of_public_association"/>
+  <table-filter match-name="all_records"/>
+  <table-filter match-name="post"/>
+  <table-filter match-name="certificate"/>
+  <table-filter match-name="type_of_symbolic"/>
+</hibernate-reverse-engineering>

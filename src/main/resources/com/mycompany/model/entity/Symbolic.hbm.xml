@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.Symbolic" table="symbolic" catalog="register_of_public_association" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="publicAssociation" class="com.mycompany.model.entity.PublicAssociation" fetch="select">
+            <column name="public_association_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeOfSymbolic" class="com.mycompany.model.entity.TypeOfSymbolic" fetch="select">
+            <column name="type_of_symbolic_id" not-null="true" />
+        </many-to-one>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="45" />
+        </property>
+        <property name="dateOfRegistration" type="timestamp">
+            <column name="date_of_registration" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.PublicAssociationHasPerson" table="public_association_has_person" catalog="register_of_public_association" optimistic-lock="version">
+        <composite-id name="id" class="com.mycompany.model.entity.PublicAssociationHasPersonId">
+            <key-property name="publicAssociationId" type="int">
+                <column name="public_association_id" />
+            </key-property>
+            <key-property name="personId" type="int">
+                <column name="person_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="person" class="com.mycompany.model.entity.Person" update="false" insert="false" fetch="select">
+            <column name="person_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="post" class="com.mycompany.model.entity.Post" fetch="select">
+            <column name="post_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="publicAssociation" class="com.mycompany.model.entity.PublicAssociation" update="false" insert="false" fetch="select">
+            <column name="public_association_id" not-null="true" />
+        </many-to-one>
+        <property name="founder" type="java.lang.Integer">
+            <column name="founder" />
+        </property>
+    </class>
+</hibernate-mapping>

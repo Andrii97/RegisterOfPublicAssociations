@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.Cause" table="cause" catalog="register_of_public_association" optimistic-lock="version">
+        <id name="allRecordsId" type="int">
+            <column name="all_records_id" />
+            <generator class="foreign">
+                <param name="property">allRecords</param>
+            </generator>
+        </id>
+        <one-to-one name="allRecords" class="com.mycompany.model.entity.AllRecords" constrained="true"></one-to-one>
+        <property name="causes" type="string">
+            <column name="causes" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
