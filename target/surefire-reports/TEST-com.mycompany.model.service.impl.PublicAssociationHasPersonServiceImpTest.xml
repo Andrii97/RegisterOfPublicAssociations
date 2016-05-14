@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.mycompany.model.service.impl.PublicAssociationServiceImpTest" time="15.744" errors="1" skipped="0">
+<testsuite tests="3" failures="0" name="com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest" time="15.072" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="test" value="com.mycompany.model.service.impl.PublicAssociationServiceImpTest"/>
+    <property name="test" value="com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\redin\OneDrive\Documents\RegisterOfPublicAssociations"/>
     <property name="java.runtime.version" value="1.8.0_77-b03"/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_77\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.mycompany.model.service.impl.PublicAssociationServiceImpTest -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.1\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.1\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="ru"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -62,10 +62,24 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mycompany.model.service.impl.PublicAssociationServiceImpTest" name="testGetByKind" time="0.057">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at com.mycompany.model.service.impl.PublicAssociationServiceImp.getByKind(PublicAssociationServiceImp.java:51)
-	at com.mycompany.model.service.impl.PublicAssociationServiceImpTest.testGetByKind(PublicAssociationServiceImpTest.java:127)
+  <testcase classname="com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest" name="testGetByPostId" time="0.703"/>
+  <testcase classname="com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest" name="testGetByPersonId" time="0.093"/>
+  <testcase classname="com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest" name="testAddPublicAssociationHasPerson" time="0.122">
+    <error message="Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null" type="org.springframework.dao.InvalidDataAccessApiUsageException">org.springframework.dao.InvalidDataAccessApiUsageException: Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:384)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:437)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:59)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:213)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:147)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:133)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy55.saveAndFlush(Unknown Source)
+	at com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(PublicAssociationHasPersonServiceImp.java:28)
+	at com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest.testAddPublicAssociationHasPerson(PublicAssociationHasPersonServiceImpTest.java:59)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -105,38 +119,39 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: java.lang.IllegalArgumentException: Target object must not be null
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.setWrappedInstance(AbstractNestablePropertyAccessor.java:205)
+	at org.springframework.beans.BeanWrapperImpl.setWrappedInstance(BeanWrapperImpl.java:138)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.setWrappedInstance(AbstractNestablePropertyAccessor.java:194)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.&lt;init&gt;(AbstractNestablePropertyAccessor.java:133)
+	at org.springframework.beans.BeanWrapperImpl.&lt;init&gt;(BeanWrapperImpl.java:101)
+	at org.springframework.data.util.DirectFieldAccessFallbackBeanWrapper.&lt;init&gt;(DirectFieldAccessFallbackBeanWrapper.java:35)
+	at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.getId(JpaMetamodelEntityInformation.java:144)
+	at org.springframework.data.repository.core.support.AbstractEntityInformation.isNew(AbstractEntityInformation.java:51)
+	at org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation.isNew(JpaMetamodelEntityInformation.java:223)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:504)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush(SimpleJpaRepository.java:519)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.executeMethodOn(RepositoryFactorySupport.java:503)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:488)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:460)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136)
+	... 48 more
 </error>
-    <system-out>getByKind
+    <system-out>addPublicAssociationHasPerson
 </system-out>
-    <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-мая 15, 2016 2:32:56 AM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
-INFO: HHH000204: Processing PersistenceUnitInfo [
-	name: default
-	...]
-мая 15, 2016 2:32:57 AM org.hibernate.Version logVersion
-INFO: HHH000412: Hibernate Core {4.3.1.Final}
-мая 15, 2016 2:32:57 AM org.hibernate.cfg.Environment &lt;clinit&gt;
-INFO: HHH000206: hibernate.properties not found
-мая 15, 2016 2:32:57 AM org.hibernate.cfg.Environment buildBytecodeProvider
-INFO: HHH000021: Bytecode provider name : javassist
-мая 15, 2016 2:32:58 AM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
-INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-Sun May 15 02:32:59 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-мая 15, 2016 2:32:59 AM org.hibernate.dialect.Dialect &lt;init&gt;
-INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-мая 15, 2016 2:33:01 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
-INFO: HHH000397: Using ASTQueryTranslatorFactory
-Sun May 15 02:33:06 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-мая 15, 2016 2:33:06 AM org.hibernate.dialect.Dialect &lt;init&gt;
-INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-мая 15, 2016 2:33:06 AM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
-INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
-мая 15, 2016 2:33:06 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
-INFO: HHH000397: Using ASTQueryTranslatorFactory
+    <system-err>Sun May 15 02:33:58 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 </system-err>
   </testcase>
-  <testcase classname="com.mycompany.model.service.impl.PublicAssociationServiceImpTest" name="testGetByFullName" time="0.703"/>
-  <testcase classname="com.mycompany.model.service.impl.PublicAssociationServiceImpTest" name="testGetAll" time="0.405"/>
 </testsuite>
