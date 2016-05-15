@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import com.mycompany.model.repository.PublicAssociationRepository;
+import com.mycompany.model.repository.KindRepository;
 import com.mycompany.model.service.PublicAssociationService;
 
 /**
@@ -22,6 +24,7 @@ import com.mycompany.model.service.PublicAssociationService;
 public class PublicAssociationServiceImp implements PublicAssociationService {
     @Autowired
     private PublicAssociationRepository publicAssociationRepository;
+    private KindRepository kindRepository;
     
     @Override
     public List<PublicAssociation> getAll(){
@@ -34,12 +37,19 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
         return savedPublicAssociation;
     }
     
-    
+    public PublicAssociation addPublicAssociationKind(Set<Kind> kinds, PublicAssociation publicAssociation){
+        publicAssociation.setKinds(kinds);
+        return publicAssociation;
+    }
     
     @Override
     public PublicAssociation getByFullName(String name){
         return publicAssociationRepository.findByFullName(name);
     }
     
+    public Set<PublicAssociation> getByKind(String name){
+        Kind savedKind = kindRepository.findByName(name);
+        return savedKind.getPublicAssociations();
+    }
     
 }
