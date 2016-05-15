@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/register_of_public_association</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1111</property>
+    <mapping resource="com/mycompany/model/entity/PublicAssociationHasPerson.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Post.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Nationality.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/FourthLevelOfLocation.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Kind.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/PublicAssociation.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Admin.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/SecondLevelOfLocation.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Cause.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/AllRecords.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Certificate.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/ThirdLevelOfLocation.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Person.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Symbolic.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/TypeOfSymbolic.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Enterprise.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/FirstLevelOfLocation.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/Statuse.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/TerminationOfActivity.hbm.xml"/>
+    <mapping resource="com/mycompany/model/entity/FormOfIncorporation.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

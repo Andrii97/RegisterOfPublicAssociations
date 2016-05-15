@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.AllRecords" table="all_records" catalog="register_of_public_association" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="admin" class="com.mycompany.model.entity.Admin" fetch="select">
+            <column name="admin_id" not-null="true" />
+        </many-to-one>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="details" type="string">
+            <column name="details" length="65535" />
+        </property>
+        <one-to-one name="cause" class="com.mycompany.model.entity.Cause"></one-to-one>
+    </class>
+</hibernate-mapping>

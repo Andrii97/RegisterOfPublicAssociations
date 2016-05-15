@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.PublicAssociation" table="public_association" catalog="register_of_public_association" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="certificate" class="com.mycompany.model.entity.Certificate" fetch="select">
+            <column name="certificate_id" />
+        </many-to-one>
+        <many-to-one name="formOfIncorporation" class="com.mycompany.model.entity.FormOfIncorporation" fetch="select">
+            <column name="form_of_incorporation_id" not-null="true" />
+        </many-to-one>
+        <property name="dateOfRegistration" type="timestamp">
+            <column name="date_of_registration" length="19" />
+        </property>
+        <property name="dateOfClosing" type="timestamp">
+            <column name="date_of_closing" length="19" />
+        </property>
+        <property name="dateOfLastEvent" type="timestamp">
+            <column name="date_of_last_event" length="19" />
+        </property>
+        <property name="legalPosition" type="java.lang.Integer">
+            <column name="legal_position" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="full_name" length="65535" not-null="true" />
+        </property>
+        <property name="shortName" type="string">
+            <column name="short_name" length="65535" />
+        </property>
+        <property name="foreignLanguageName" type="string">
+            <column name="foreign_language_name" length="65535" />
+        </property>
+        <property name="businessActivities" type="java.lang.Integer">
+            <column name="business_activities" />
+        </property>
+        <property name="usreouCode" type="java.lang.Integer">
+            <column name="USREOU_code" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="phone_number" length="45" />
+        </property>
+        <property name="objective" type="string">
+            <column name="objective" length="45" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="45" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="firstLevelOfLocation" type="int">
+            <column name="first_level_of_location" not-null="true" />
+        </property>
+        <property name="secondLevelOfLocation" type="int">
+            <column name="second_level_of_location" not-null="true" />
+        </property>
+        <property name="thirdLevelOfLocation" type="int">
+            <column name="third_level_of_location" not-null="true" />
+        </property>
+        <property name="fourthLevelOfLocation" type="int">
+            <column name="fourth_level_of_location" not-null="true" />
+        </property>
+        <set name="enterprises" table="enterprise" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <one-to-many class="com.mycompany.model.entity.Enterprise" />
+        </set>
+        <set name="kinds" table="public_association_has_kind" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.mycompany.model.entity.Kind">
+                <column name="kind_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="symbolics" table="symbolic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <one-to-many class="com.mycompany.model.entity.Symbolic" />
+        </set>
+        <set name="statuses" table="public_association_has_statuse" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.mycompany.model.entity.Statuse">
+                <column name="statuse_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="publicAssociationHasPersons" table="public_association_has_person" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <one-to-many class="com.mycompany.model.entity.PublicAssociationHasPerson" />
+        </set>
+        <set name="publicAssociationsForPublicAssociationUnitId" table="unit_of_public_association" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.mycompany.model.entity.PublicAssociation">
+                <column name="public_association_unit_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <one-to-one name="terminationOfActivity" class="com.mycompany.model.entity.TerminationOfActivity"></one-to-one>
+        <set name="publicAssociationsForPublicAssociationId" table="unit_of_public_association" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="public_association_unit_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.mycompany.model.entity.PublicAssociation">
+                <column name="public_association_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
