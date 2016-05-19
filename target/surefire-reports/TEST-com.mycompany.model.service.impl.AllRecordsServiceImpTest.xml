@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.mycompany.model.service.impl.PersonServiceImpTest" time="0.137" errors="1" skipped="0">
+<testsuite tests="2" failures="0" name="com.mycompany.model.service.impl.AllRecordsServiceImpTest" time="0.298" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -61,7 +61,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mycompany.model.service.impl.PersonServiceImpTest" name="testAddPerson" time="0.041">
+  <testcase classname="com.mycompany.model.service.impl.AllRecordsServiceImpTest" name="testGetById" time="0.028"/>
+  <testcase classname="com.mycompany.model.service.impl.AllRecordsServiceImpTest" name="testAddAllRecords" time="0.055">
     <error message="Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null" type="org.springframework.dao.InvalidDataAccessApiUsageException">org.springframework.dao.InvalidDataAccessApiUsageException: Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null
 	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:384)
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:437)
@@ -74,9 +75,9 @@
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
-	at com.sun.proxy.$Proxy56.saveAndFlush(Unknown Source)
-	at com.mycompany.model.service.impl.PersonServiceImp.addPerson(PersonServiceImp.java:26)
-	at com.mycompany.model.service.impl.PersonServiceImpTest.testAddPerson(PersonServiceImpTest.java:63)
+	at com.sun.proxy.$Proxy53.saveAndFlush(Unknown Source)
+	at com.mycompany.model.service.impl.AllRecordsServiceImp.addAllRecords(AllRecordsServiceImp.java:24)
+	at com.mycompany.model.service.impl.AllRecordsServiceImpTest.testAddAllRecords(AllRecordsServiceImpTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -146,10 +147,9 @@ Caused by: java.lang.IllegalArgumentException: Target object must not be null
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136)
 	... 48 more
 </error>
-    <system-out>addPerson
+    <system-out>addAllRecords
 </system-out>
     <system-err>Thu May 19 22:49:43 IDT 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 </system-err>
   </testcase>
-  <testcase classname="com.mycompany.model.service.impl.PersonServiceImpTest" name="testGetByName" time="0.09"/>
 </testsuite>
