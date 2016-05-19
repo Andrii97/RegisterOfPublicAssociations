@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author redin
  */
+@Repository
 public interface NationalityRepository extends JpaRepository<Nationality, Integer>{
     Nationality findByName(String name);
 }

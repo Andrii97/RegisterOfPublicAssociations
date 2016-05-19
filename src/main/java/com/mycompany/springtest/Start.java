@@ -31,7 +31,12 @@ public class Start {
         
         FormOfIncorporation f = fs.getByName("Громадська організація");
         PublicAssociation p_a = new PublicAssociation(f, "Нова організація", "Зареєстровано", 0, 0, 0, 0);
- 
+        
+        PublicAssociationServiceImp publicAssociationServiceImp = (PublicAssociationServiceImp) applicationContext.getBean(PublicAssociationServiceImp.class);
+        if (publicAssociationServiceImp.getByKind("Правозахисна") == null)
+            System.out.println("NULL");
+        else
+            System.out.println("OK");
         System.in.read();
     }
 }

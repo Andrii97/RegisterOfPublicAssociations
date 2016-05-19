@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author redin
  */
+@Repository
 public interface PublicAssociationHasPersonRepository extends JpaRepository<PublicAssociationHasPerson, Integer>{
     PublicAssociationHasPerson findByPersonId(Integer personId);
     PublicAssociationHasPerson findByPostId(Integer postId);

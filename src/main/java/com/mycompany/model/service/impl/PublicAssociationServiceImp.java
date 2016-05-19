@@ -24,6 +24,7 @@ import com.mycompany.model.service.PublicAssociationService;
 public class PublicAssociationServiceImp implements PublicAssociationService {
     @Autowired
     private PublicAssociationRepository publicAssociationRepository;
+    @Autowired
     private KindRepository kindRepository;
     
     @Override
@@ -49,6 +50,8 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
     
     public Set<PublicAssociation> getByKind(String name){
         Kind savedKind = kindRepository.findByName(name);
+        if(savedKind == null)
+            return null;
         return savedKind.getPublicAssociations();
     }
     

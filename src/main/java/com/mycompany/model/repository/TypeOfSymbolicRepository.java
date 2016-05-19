@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TypeOfSymbolicRepository extends JpaRepository<TypeOfSymbolic, Long>{
-    TypeOfSymbolic FindByName(String name);
+    TypeOfSymbolic findByName(String name);
 }

@@ -5,6 +5,7 @@
  */
 package com.mycompany.model.service.impl;
 
+import com.mycompany.model.entity.FormOfIncorporation;
 import com.mycompany.model.entity.Kind;
 import com.mycompany.model.entity.PublicAssociation;
 import java.util.List;
@@ -17,6 +18,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -72,22 +75,23 @@ public class PublicAssociationServiceImpTest {
     /**
      * Test of addPublicAssociation method, of class PublicAssociationServiceImp.
      */
-    /*@Test
+    @Test
     public void testAddPublicAssociation() {
         System.out.println("addPublicAssociation");
-        PublicAssociation publicAssociation = null;
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:spring.xml");
+        FormOfIncorporationServiceImp f = (FormOfIncorporationServiceImp)applicationContext.getBean(FormOfIncorporationServiceImp.class);
+        FormOfIncorporation form = f.getByName("Громадська організація");
+        PublicAssociation publicAssociation = new PublicAssociation(form,"Організація", "Зареєстровано", 3, 4, 5, 5);
         //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        PublicAssociation expResult = null;
+        PublicAssociation expResult = publicAssociation;
         PublicAssociation result = instance.addPublicAssociation(publicAssociation);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of addPublicAssociationKind method, of class PublicAssociationServiceImp.
      */
-    /*@Test
+    @Test
     public void testAddPublicAssociationKind() {
         System.out.println("addPublicAssociationKind");
         Set<Kind> kinds = null;
@@ -125,7 +129,7 @@ public class PublicAssociationServiceImpTest {
         //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
         //Set<PublicAssociation> expResult = null;
         Set<PublicAssociation> result = instance.getByKind(name);
-        assertNotNull(result);
+        assertNull(result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }

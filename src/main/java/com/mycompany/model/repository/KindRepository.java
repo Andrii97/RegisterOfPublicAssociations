@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author redin
  */
+@Repository
 public interface KindRepository extends JpaRepository<Kind, Integer> {
     Kind findByName(String name);
 }

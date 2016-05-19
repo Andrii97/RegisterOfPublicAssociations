@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
-Test set: com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest
+Test set: com.mycompany.model.service.impl.EnterpriseServiceImpTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.056 sec <<< FAILURE!
-testAddPublicAssociationHasPerson(com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest)  Time elapsed: 0.142 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 32.057 sec <<< FAILURE!
+testAddEnterprise(com.mycompany.model.service.impl.EnterpriseServiceImpTest)  Time elapsed: 0.14 sec  <<< ERROR!
 org.springframework.dao.InvalidDataAccessApiUsageException: Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null
 	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:384)
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:437)
@@ -15,9 +15,9 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Target object must n
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
-	at com.sun.proxy.$Proxy57.saveAndFlush(Unknown Source)
-	at com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(PublicAssociationHasPersonServiceImp.java:28)
-	at com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest.testAddPublicAssociationHasPerson(PublicAssociationHasPersonServiceImpTest.java:59)
+	at com.sun.proxy.$Proxy54.saveAndFlush(Unknown Source)
+	at com.mycompany.model.service.impl.EnterpriseServiceImp.addEnterprise(EnterpriseServiceImp.java:27)
+	at com.mycompany.model.service.impl.EnterpriseServiceImpTest.testAddEnterprise(EnterpriseServiceImpTest.java:59)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

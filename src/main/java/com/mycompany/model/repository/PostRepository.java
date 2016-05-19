@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author redin
  */
+@Repository
 public interface PostRepository extends JpaRepository<Post, Integer>{
     Post findByName(String name);
 }
