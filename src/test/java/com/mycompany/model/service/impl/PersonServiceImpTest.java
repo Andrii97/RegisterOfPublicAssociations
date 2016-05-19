@@ -8,6 +8,7 @@ package com.mycompany.model.service.impl;
 import com.mycompany.model.entity.*;
 import com.mycompany.model.service.PersonService;
 import com.mycompany.model.entity.Person;
+import com.mycompany.model.repository.NationalityRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,7 +31,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PersonServiceImpTest {
     
     @Autowired
-    PersonServiceImp instance;
+    private PersonServiceImp instance;
+    @Autowired
+    private NationalityRepository nationalityRepository;
     
     public PersonServiceImpTest() {
     }
@@ -57,9 +60,10 @@ public class PersonServiceImpTest {
     @Test
     public void testAddPerson() {
         System.out.println("addPerson");
-        Person person = null;
+        Nationality nationality = nationalityRepository.findByName("ukrainian");
+        Person person = new Person(nationality, "John");
       //  PersonServiceImp instance = new PersonServiceImp();
-        Person expResult = null;
+        Person expResult = person;
         Person result = instance.addPerson(person);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
