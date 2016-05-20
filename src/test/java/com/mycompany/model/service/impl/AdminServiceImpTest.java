@@ -52,13 +52,10 @@ public class AdminServiceImpTest {
     @Test
     public void testAddAdmin() {
         System.out.println("addAdmin");
-        Admin admin = null;
-        //AdminServiceImp instance = new AdminServiceImp();
-        Admin expResult = null;
+        Admin admin = new Admin("Руслан", "");
+        Admin expResult = admin;
         Admin result = instance.addAdmin(admin);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
     }
 
     /**
@@ -67,13 +64,9 @@ public class AdminServiceImpTest {
     @Test
     public void testGetByName() {
         System.out.println("getByName");
-        String name = "";
-        //AdminServiceImp instance = new AdminServiceImp();
-        Admin expResult = null;
+        String name = "Андрій";
         Admin result = instance.getByName(name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertNotNull(result);
     }
     
 }

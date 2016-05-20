@@ -66,17 +66,14 @@ public class PublicAssociationHasPersonServiceImpTest {
     @Test
     public void testAddPublicAssociationHasPerson() {
         System.out.println("addPublicAssociationHasPerson");
-        Person person = personRepository.findByName("John");
+        Person person = personRepository.findByName("Сергієнко Ярослав Степанович");
         Post post = postRepository.findByName("Голова Ради");
         PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація");
         PublicAssociationHasPersonId publicAssociationPersonId = new PublicAssociationHasPersonId(publicAssociation.getId(), person.getId());
         PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociationPersonId, person, post, publicAssociation);
-       // PublicAssociationHasPersonServiceImp instance = new PublicAssociationHasPersonServiceImp();
         PublicAssociationHasPerson expResult = publicAssociationPerson;
         PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -86,12 +83,9 @@ public class PublicAssociationHasPersonServiceImpTest {
     public void testGetByPersonId() {
         System.out.println("getByPersonId");
         Integer personId = null;
-       // PublicAssociationHasPersonServiceImp instance = new PublicAssociationHasPersonServiceImp();
         PublicAssociationHasPerson expResult = null;
         PublicAssociationHasPerson result = instance.getByPersonId(personId);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -101,12 +95,9 @@ public class PublicAssociationHasPersonServiceImpTest {
     public void testGetByPostId() {
         System.out.println("getByPostId");
         Integer postId = null;
-        //PublicAssociationHasPersonServiceImp instance = new PublicAssociationHasPersonServiceImp();
         PublicAssociationHasPerson expResult = null;
         PublicAssociationHasPerson result = instance.getByPostId(postId);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

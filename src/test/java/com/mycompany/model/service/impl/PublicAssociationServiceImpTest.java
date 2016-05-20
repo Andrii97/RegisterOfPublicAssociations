@@ -39,6 +39,8 @@ public class PublicAssociationServiceImpTest {
     private PublicAssociationServiceImp instance;
     @Autowired
     private KindRepository kindRepository;
+    @Autowired
+    private FormOfIncorporationServiceImp formOfIncorporationServiceImp;
     
     public PublicAssociationServiceImpTest() {
     }
@@ -65,27 +67,21 @@ public class PublicAssociationServiceImpTest {
     @Test
     public void testGetAll() {
         System.out.println("getAll");
-        //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        //List<PublicAssociation> expResult = null;
         List<PublicAssociation> result = instance.getAll();
         assertNotNull(result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of addPublicAssociation method, of class PublicAssociationServiceImp.
      */
-    /*@Test
+    @Test
     public void testAddPublicAssociation() {
         System.out.println("addPublicAssociation");
-        PublicAssociation publicAssociation = null;
-        //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        PublicAssociation expResult = null;
+        PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationServiceImp.getByName("Громадська спілка"), 
+                "Нова громадська організація", "Незареєстровано", 0, 0, 0, 0);
+        PublicAssociation expResult = publicAssociation;
         PublicAssociation result = instance.addPublicAssociation(publicAssociation);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,8 +98,6 @@ public class PublicAssociationServiceImpTest {
         PublicAssociation expResult = publicAssociation;
         PublicAssociation result = instance.addPublicAssociation(publicAssociation);
         assertNotNull(result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -113,12 +107,9 @@ public class PublicAssociationServiceImpTest {
     public void testGetByFullName() {
         System.out.println("getByFullName");
         String name = "";
-        //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
         PublicAssociation expResult = null;
         PublicAssociation result = instance.getByFullName(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -128,12 +119,8 @@ public class PublicAssociationServiceImpTest {
     public void testGetByKind() {
         System.out.println("getByKind");
         String name = "Правозахисна";
-        //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        //Set<PublicAssociation> expResult = null;
         Set<PublicAssociation> result = instance.getByKind(name);
         assertNotNull(result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

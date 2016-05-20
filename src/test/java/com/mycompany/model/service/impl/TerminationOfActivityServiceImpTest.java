@@ -6,6 +6,7 @@
 package com.mycompany.model.service.impl;
 
 import com.mycompany.model.entity.TerminationOfActivity;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,6 +27,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TerminationOfActivityServiceImpTest {
     @Autowired
     private TerminationOfActivityServiceImp instance;
+    @Autowired
+    private PublicAssociationServiceImp publicAssociationServiceImp;
+    
     public TerminationOfActivityServiceImpTest() {
     }
     
@@ -51,13 +55,12 @@ public class TerminationOfActivityServiceImpTest {
     @Test
     public void testAddTerminationOfActivity() {
         System.out.println("addTerminationOfActivity");
-        TerminationOfActivity terminationOfActivity = null;
-        //TerminationOfActivityServiceImp instance = new TerminationOfActivityServiceImp();
-        TerminationOfActivity expResult = null;
+        Date currentDate = new Date();
+        TerminationOfActivity terminationOfActivity = new TerminationOfActivity(
+                publicAssociationServiceImp.getByFullName("Організація1"), "Рішення суду");//, currentDate);
+        TerminationOfActivity expResult = terminationOfActivity;
         TerminationOfActivity result = instance.addTerminationOfActivity(terminationOfActivity);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -67,12 +70,9 @@ public class TerminationOfActivityServiceImpTest {
     public void testGetByPublicAssociationId() {
         System.out.println("getByPublicAssociationId");
         Integer id = null;
-        //TerminationOfActivityServiceImp instance = new TerminationOfActivityServiceImp();
         TerminationOfActivity expResult = null;
         TerminationOfActivity result = instance.getByPublicAssociationId(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

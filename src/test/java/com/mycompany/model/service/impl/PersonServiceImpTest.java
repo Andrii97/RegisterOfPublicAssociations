@@ -60,14 +60,11 @@ public class PersonServiceImpTest {
     @Test
     public void testAddPerson() {
         System.out.println("addPerson");
-        Nationality nationality = nationalityRepository.findByName("ukrainian");
-        Person person = new Person(nationality, "John");
-      //  PersonServiceImp instance = new PersonServiceImp();
+        Nationality nationality = nationalityRepository.findByName("українське");
+        Person person = new Person(nationality, "Іванченко Іван Володимирович");
         Person expResult = person;
         Person result = instance.addPerson(person);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
     }
 
     /**
@@ -77,12 +74,9 @@ public class PersonServiceImpTest {
     public void testGetByName() {
         System.out.println("getByName");
         String name = "";
-        //PersonServiceImp instance = new PersonServiceImp();
         Person expResult = null;
         Person result = instance.getByName(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }
