@@ -5,11 +5,12 @@
  */
 package com.mycompany.model.service.impl;
 
-import com.mycompany.model.entity.FormOfIncorporation;
 import com.mycompany.model.entity.Kind;
 import com.mycompany.model.entity.PublicAssociation;
+import com.mycompany.model.repository.KindRepository;
 import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,8 +19,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -38,6 +37,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PublicAssociationServiceImpTest {
     @Autowired
     private PublicAssociationServiceImp instance;
+    @Autowired
+    private KindRepository kindRepository;
     
     public PublicAssociationServiceImpTest() {
     }
@@ -75,17 +76,16 @@ public class PublicAssociationServiceImpTest {
     /**
      * Test of addPublicAssociation method, of class PublicAssociationServiceImp.
      */
-    @Test
+    /*@Test
     public void testAddPublicAssociation() {
         System.out.println("addPublicAssociation");
-        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:spring.xml");
-        FormOfIncorporationServiceImp f = (FormOfIncorporationServiceImp)applicationContext.getBean(FormOfIncorporationServiceImp.class);
-        FormOfIncorporation form = f.getByName("Громадська організація");
-        PublicAssociation publicAssociation = new PublicAssociation(form,"Організація", "Зареєстровано", 3, 4, 5, 5);
+        PublicAssociation publicAssociation = null;
         //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        PublicAssociation expResult = publicAssociation;
+        PublicAssociation expResult = null;
         PublicAssociation result = instance.addPublicAssociation(publicAssociation);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -94,12 +94,14 @@ public class PublicAssociationServiceImpTest {
     @Test
     public void testAddPublicAssociationKind() {
         System.out.println("addPublicAssociationKind");
-        Set<Kind> kinds = null;
-        PublicAssociation publicAssociation = null;
-        //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
-        PublicAssociation expResult = null;
-        PublicAssociation result = instance.addPublicAssociationKind(kinds, publicAssociation);
-        assertEquals(expResult, result);
+        Kind kind = kindRepository.findByName("Правозахисна");
+        PublicAssociation publicAssociation = instance.getByFullName("Організація");
+        Set<Kind> kinds = new HashSet<Kind>();
+        kinds.add(kind);
+        publicAssociation.setKinds(kinds);
+        PublicAssociation expResult = publicAssociation;
+        PublicAssociation result = instance.addPublicAssociation(publicAssociation);
+        assertNotNull(result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -125,11 +127,11 @@ public class PublicAssociationServiceImpTest {
     @Test
     public void testGetByKind() {
         System.out.println("getByKind");
-        String name = "";
+        String name = "Правозахисна";
         //PublicAssociationServiceImp instance = new PublicAssociationServiceImp();
         //Set<PublicAssociation> expResult = null;
         Set<PublicAssociation> result = instance.getByKind(name);
-        assertNull(result);
+        assertNotNull(result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }

@@ -14,7 +14,6 @@ import java.util.Set;
 import com.mycompany.model.repository.PublicAssociationRepository;
 import com.mycompany.model.repository.KindRepository;
 import com.mycompany.model.service.PublicAssociationService;
-
 /**
  *
  * @author Andrii
@@ -38,20 +37,21 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
         return savedPublicAssociation;
     }
     
+    /*@Override
     public PublicAssociation addPublicAssociationKind(Set<Kind> kinds, PublicAssociation publicAssociation){
         publicAssociation.setKinds(kinds);
-        return publicAssociation;
-    }
+        PublicAssociation savedPublicAssociation = publicAssociationRepository.saveAndFlush(publicAssociation);
+        return savedPublicAssociation;
+    }*/
     
     @Override
     public PublicAssociation getByFullName(String name){
         return publicAssociationRepository.findByFullName(name);
     }
     
+    @Override
     public Set<PublicAssociation> getByKind(String name){
         Kind savedKind = kindRepository.findByName(name);
-        if(savedKind == null)
-            return null;
         return savedKind.getPublicAssociations();
     }
     

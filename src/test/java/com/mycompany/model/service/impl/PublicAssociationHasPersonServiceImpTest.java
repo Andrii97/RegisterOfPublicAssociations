@@ -6,6 +6,13 @@
 package com.mycompany.model.service.impl;
 
 import com.mycompany.model.entity.PublicAssociationHasPerson;
+import com.mycompany.model.entity.Person;
+import com.mycompany.model.entity.Post;
+import com.mycompany.model.entity.PublicAssociation;
+import com.mycompany.model.entity.PublicAssociationHasPersonId;
+import com.mycompany.model.repository.PublicAssociationRepository;
+import com.mycompany.model.repository.PostRepository;
+import com.mycompany.model.repository.PersonRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -27,6 +34,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PublicAssociationHasPersonServiceImpTest {
     @Autowired
     private PublicAssociationHasPersonServiceImp instance;
+    @Autowired
+    private PersonRepository personRepository;
+    @Autowired
+    private PublicAssociationRepository publicAssociationRepository;
+    @Autowired
+    private PostRepository postRepository;
     
     public PublicAssociationHasPersonServiceImpTest() {
     }
@@ -53,11 +66,15 @@ public class PublicAssociationHasPersonServiceImpTest {
     @Test
     public void testAddPublicAssociationHasPerson() {
         System.out.println("addPublicAssociationHasPerson");
-        PublicAssociationHasPerson person = null;
+        Person person = personRepository.findByName("John");
+        Post post = postRepository.findByName("Голова Ради");
+        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація");
+        PublicAssociationHasPersonId publicAssociationPersonId = new PublicAssociationHasPersonId(publicAssociation.getId(), person.getId());
+        PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociationPersonId, person, post, publicAssociation);
        // PublicAssociationHasPersonServiceImp instance = new PublicAssociationHasPersonServiceImp();
-        PublicAssociationHasPerson expResult = null;
-        PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(person);
-        assertEquals(expResult, result);
+        PublicAssociationHasPerson expResult = publicAssociationPerson;
+        PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(publicAssociationPerson);
+        assertNotNull(result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
