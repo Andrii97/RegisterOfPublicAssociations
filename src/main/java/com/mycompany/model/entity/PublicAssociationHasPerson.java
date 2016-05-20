@@ -45,6 +45,16 @@ public class PublicAssociationHasPerson  implements java.io.Serializable {
        this.publicAssociation = publicAssociation;
        this.founder = founder;
     }
+
+    public PublicAssociationHasPerson(PublicAssociation publicAssociation, Person person, Post post) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PublicAssociationHasPersonId publicAssociationHasPersonId = new PublicAssociationHasPersonId(
+                publicAssociation.getId(), person.getId());
+        this.id = publicAssociationHasPersonId;
+        this.person = person;
+        this.post = post;
+        this.publicAssociation = publicAssociation;
+    }
    
      @EmbeddedId
 

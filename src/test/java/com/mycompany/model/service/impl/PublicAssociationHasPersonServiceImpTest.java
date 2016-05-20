@@ -5,11 +5,14 @@
  */
 package com.mycompany.model.service.impl;
 
+import com.mycompany.model.entity.Nationality;
 import com.mycompany.model.entity.PublicAssociationHasPerson;
+import com.mycompany.model.entity.PublicAssociation;
 import com.mycompany.model.entity.Person;
 import com.mycompany.model.entity.Post;
 import com.mycompany.model.entity.PublicAssociation;
 import com.mycompany.model.entity.PublicAssociationHasPersonId;
+import com.mycompany.model.repository.NationalityRepository;
 import com.mycompany.model.repository.PublicAssociationRepository;
 import com.mycompany.model.repository.PostRepository;
 import com.mycompany.model.repository.PersonRepository;
@@ -40,6 +43,15 @@ public class PublicAssociationHasPersonServiceImpTest {
     private PublicAssociationRepository publicAssociationRepository;
     @Autowired
     private PostRepository postRepository;
+    
+    @Autowired
+    private PersonServiceImp personServiceImp;
+    @Autowired
+    private NationalityRepository nationalityRepository;
+    @Autowired
+    private FormOfIncorporationServiceImp formOfIncorporationServiceImp;
+    @Autowired
+    private PublicAssociationServiceImp publicAssociationServiceImp;
     
     public PublicAssociationHasPersonServiceImpTest() {
     }
@@ -74,6 +86,33 @@ public class PublicAssociationHasPersonServiceImpTest {
         PublicAssociationHasPerson expResult = publicAssociationPerson;
         PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result);
+    }
+    
+    @Test
+    public void testAddPublicAssociationHasPersonNew() {
+        System.out.println("addPublicAssociationHasPersonNew");
+        System.out.println("addPerson");
+        Nationality nationality = nationalityRepository.findByName("українське");
+        Person person = new Person(nationality, "Іванченко Іван Володимирович");
+        Person expResult = person;
+        Person result = personServiceImp.addPerson(person);
+        assertEquals(result, expResult);
+        System.out.println("addPost");
+        Post post = new Post("Секретар");
+        postRepository.saveAndFlush(post);
+        
+        System.out.println("addPublicAssociation");
+        PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationServiceImp.getByName("Громадська спілка"), 
+                "Нова громадська організація", "Незареєстровано", 0, 0, 0, 0);
+        PublicAssociation expResult1 = publicAssociation;
+        PublicAssociation result1 = publicAssociationServiceImp.addPublicAssociation(publicAssociation);
+        assertEquals(expResult1, result1);
+        
+        PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociation,
+                person, post);
+        PublicAssociationHasPerson result2 = instance.addPublicAssociationHasPerson(publicAssociationPerson);
+        assertNotNull(result2);
+        
     }
 
     /**
