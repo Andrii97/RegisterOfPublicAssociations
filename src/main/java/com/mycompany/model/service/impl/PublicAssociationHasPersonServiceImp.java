@@ -38,4 +38,9 @@ public class PublicAssociationHasPersonServiceImp implements PublicAssociationHa
     public PublicAssociationHasPerson getByPostId(Integer postId){
         return publicAssociationHasPersonRepository.findByPostId(postId);
     }
+    
+    @Override
+    public void deletePublicAssociationHasPerson(PublicAssociationHasPerson person){
+        publicAssociationHasPersonRepository.delete(person);
+    }
 }

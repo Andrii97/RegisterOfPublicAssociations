@@ -1,0 +1,44 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #0897af;
+    color: white;
+    padding: 10px;
+}
+
+#styled {
+    width: 400px;
+    height: 120px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    font-family: Tahoma, sans-serif;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 200%;
+    border: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}

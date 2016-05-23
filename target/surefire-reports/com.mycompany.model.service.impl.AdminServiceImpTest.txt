@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.model.service.impl.AdminServiceImpTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.792 sec <<< FAILURE!
 testAddAdmin(com.mycompany.model.service.impl.AdminServiceImpTest)  Time elapsed: 0.03 sec  <<< ERROR!
 org.springframework.dao.InvalidDataAccessApiUsageException: Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null
@@ -86,3 +87,6 @@ Caused by: java.lang.IllegalArgumentException: Target object must not be null
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136)
 	... 48 more
+=======
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 65.412 sec
+>>>>>>> AndriiRepository/master

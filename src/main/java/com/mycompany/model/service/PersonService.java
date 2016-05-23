@@ -15,4 +15,5 @@ import java.util.List;
 public interface PersonService {
     Person addPerson(Person person);
     Person getByName(String name);
+    void deletePerson(Person person);
 }

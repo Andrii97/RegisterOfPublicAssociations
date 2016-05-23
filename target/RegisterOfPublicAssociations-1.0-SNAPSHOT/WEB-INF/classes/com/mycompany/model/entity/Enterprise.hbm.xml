@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.Enterprise" table="enterprise" catalog="register_of_public_association" optimistic-lock="version">
+        <id name="usreouCode" type="int">
+            <column name="USREOU_code" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="publicAssociation" class="com.mycompany.model.entity.PublicAssociation" fetch="select">
+            <column name="public_association_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

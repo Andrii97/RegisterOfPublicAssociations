@@ -48,31 +48,14 @@ public class FormOfIncorporationServiceImpTest {
     }
 
     /**
-     * Test of addFormOfIncorporation method, of class FormOfIncorporationServiceImp.
-     *//*
-    @Test
-    public void testAddFormOfIncorporation() {
-        System.out.println("addFormOfIncorporation");
-        FormOfIncorporation formOfIncorporation = null;
-        FormOfIncorporation expResult = null;
-        FormOfIncorporation result = instance.addFormOfIncorporation(formOfIncorporation);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
-
-    /**
      * Test of getByName method, of class FormOfIncorporationServiceImp.
      */
     @Test
     public void testGetByName() {
         System.out.println("getByName");
-        String name = "";
-        FormOfIncorporation expResult = null;
+        String name = "Громадська спілка";
         FormOfIncorporation result = instance.getByName(name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertNotNull(result);
     }
     
 }

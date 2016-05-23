@@ -6,6 +6,7 @@
 package com.mycompany.model.service.impl;
 
 import com.mycompany.model.entity.Symbolic;
+import com.mycompany.model.repository.TypeOfSymbolicRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -26,6 +27,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class SymbolicServiceImpTest {
     @Autowired
     private SymbolicServiceImp instance;
+    @Autowired
+    private PublicAssociationServiceImp publicAssociationServiceImp;
+    @Autowired
+    private TypeOfSymbolicRepository typeOfSymbolicRepository;
+    
     public SymbolicServiceImpTest() {
     }
     
@@ -51,13 +57,11 @@ public class SymbolicServiceImpTest {
     @Test
     public void testAddSymbolic() {
         System.out.println("addSymbolic");
-        Symbolic symbolic = null;
-        //SymbolicServiceImp instance = new SymbolicServiceImp();
-        Symbolic expResult = null;
+        Symbolic symbolic = new Symbolic(publicAssociationServiceImp.getByFullName("Організація"),
+                typeOfSymbolicRepository.findByName("емблема"));
+        Symbolic expResult = symbolic;
         Symbolic result = instance.addSymbolic(symbolic);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -67,12 +71,9 @@ public class SymbolicServiceImpTest {
     public void testGetByPublicAssociationId() {
         System.out.println("getByPublicAssociationId");
         Integer id = null;
-        //SymbolicServiceImp instance = new SymbolicServiceImp();
         Symbolic expResult = null;
         Symbolic result = instance.getByPublicAssociationId(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

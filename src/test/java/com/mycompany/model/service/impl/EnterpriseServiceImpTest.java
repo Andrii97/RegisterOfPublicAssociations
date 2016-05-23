@@ -57,15 +57,14 @@ public class EnterpriseServiceImpTest {
     @Test
     public void testAddEnterprise() {
         System.out.println("addEnterprise");
-        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація");
-        Enterprise enterprise = new Enterprise(3245143, publicAssociation, "Нове Підприємство");
-        //int usreouCode, PublicAssociation publicAssociation, String name
-      //  EnterpriseServiceImp instance = new EnterpriseServiceImp();
+        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація1");
+        Enterprise enterprise = new Enterprise(3245143, publicAssociation, "Нове Підприємство 2");
+
         Enterprise expResult = enterprise;
         Enterprise result = instance.addEnterprise(enterprise);
+        // assertEquals(expResult, result);
         assertNotNull(result);
-        // TODO review the generated test code and remove the default call to fail.
-     //   fail("The test case is a prototype.");
+        instance.deleteEnterprise(enterprise);
     }
 
     /**
@@ -75,12 +74,9 @@ public class EnterpriseServiceImpTest {
     public void testGetByName() {
         System.out.println("getByName");
         String name = "";
-      //  EnterpriseServiceImp instance = new EnterpriseServiceImp();
         Enterprise expResult = null;
         Enterprise result = instance.getByName(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-      //  fail("The test case is a prototype.");
     }
     
 }

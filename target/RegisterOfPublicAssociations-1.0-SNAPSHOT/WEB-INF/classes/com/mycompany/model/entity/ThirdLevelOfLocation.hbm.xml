@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06.05.2016 18:28:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.model.entity.ThirdLevelOfLocation" table="third_level_of_location" catalog="register_of_public_association" optimistic-lock="version">
+        <composite-id name="id" class="com.mycompany.model.entity.ThirdLevelOfLocationId">
+            <key-property name="code" type="int">
+                <column name="code" />
+            </key-property>
+            <key-property name="secondLevelOfLocationCode" type="int">
+                <column name="second_level_of_location_code" />
+            </key-property>
+            <key-property name="firstLevelOfLocationCode" type="int">
+                <column name="first_level_of_location_code" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="secondLevelOfLocation" class="com.mycompany.model.entity.SecondLevelOfLocation" update="false" insert="false" fetch="select">
+            <column name="second_level_of_location_code" not-null="true" />
+            <column name="first_level_of_location_code" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="65535" />
+        </property>
+        <set name="fourthLevelOfLocations" table="fourth_level_of_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="third_level_of_location_code" not-null="true" />
+                <column name="second_level_of_location_code" not-null="true" />
+                <column name="first_level_of_location_code" not-null="true" />
+            </key>
+            <one-to-many class="com.mycompany.model.entity.FourthLevelOfLocation" />
+        </set>
+    </class>
+</hibernate-mapping>

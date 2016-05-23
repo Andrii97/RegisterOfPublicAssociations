@@ -15,4 +15,5 @@ import java.util.List;
 public interface EnterpriseService {
     Enterprise addEnterprise(Enterprise enterprise);
     Enterprise getByName(String name);
+    void deleteEnterprise(Enterprise enterprise);
 }

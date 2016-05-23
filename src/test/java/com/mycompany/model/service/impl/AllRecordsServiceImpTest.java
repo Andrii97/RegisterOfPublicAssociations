@@ -5,6 +5,7 @@
  */
 package com.mycompany.model.service.impl;
 
+import com.mycompany.model.entity.Admin;
 import com.mycompany.model.entity.AllRecords;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import java.util.Date;
 
 /**
  *
@@ -26,6 +28,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AllRecordsServiceImpTest {
     @Autowired
     private AllRecordsServiceImp instance;
+    @Autowired
+    private AdminServiceImp adminServiceImp;
+    
     public AllRecordsServiceImpTest() {
     }
     
@@ -51,13 +56,13 @@ public class AllRecordsServiceImpTest {
     @Test
     public void testAddAllRecords() {
         System.out.println("addAllRecords");
-        AllRecords allrecords = null;
-        //AllRecordsServiceImp instance = new AllRecordsServiceImp();
-        AllRecords expResult = null;
-        AllRecords result = instance.addAllRecords(allrecords);
+        Admin admin = adminServiceImp.getByName("Андрій");
+        Date currentDate = new Date();
+        AllRecords allRecords = new AllRecords(admin, currentDate);
+        allRecords.setDetails("Додано нову оранызацію");
+        AllRecords expResult = allRecords;
+        AllRecords result = instance.addAllRecords(allRecords);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -66,13 +71,9 @@ public class AllRecordsServiceImpTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        Integer id = null;
-        //AllRecordsServiceImp instance = new AllRecordsServiceImp();
-        AllRecords expResult = null;
+        Integer id = 1;
         AllRecords result = instance.getById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        assertNotNull(result);
     }
     
 }

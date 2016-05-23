@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.021 sec <<< FAILURE!
 testAddPublicAssociationHasPerson(com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImpTest)  Time elapsed: 0.008 sec  <<< ERROR!
 org.springframework.dao.IncorrectResultSizeDataAccessException: result returns more than one elements; nested exception is javax.persistence.NonUniqueResultException: result returns more than one elements
@@ -80,3 +81,6 @@ Caused by: javax.persistence.NonUniqueResultException: result returns more than 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
 	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136)
 	... 47 more
+=======
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.732 sec
+>>>>>>> AndriiRepository/master

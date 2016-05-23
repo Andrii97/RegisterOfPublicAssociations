@@ -20,13 +20,6 @@ import org.springframework.stereotype.Service;
 public class FormOfIncorporationServiceImp implements FormOfIncorporationService {
     @Autowired
     private FormOfIncorporationRepository formOfIncorporationRepository;
-     
-    @Override
-    public FormOfIncorporation addFormOfIncorporation(FormOfIncorporation formOfIncorporation)
-    {
-        FormOfIncorporation savedformOfIncorporation = formOfIncorporationRepository.saveAndFlush(formOfIncorporation);
-        return savedformOfIncorporation;
-    }
     
     @Override
     public FormOfIncorporation getByName(String name)
