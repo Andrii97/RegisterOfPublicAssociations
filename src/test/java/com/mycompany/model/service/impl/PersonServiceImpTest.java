@@ -65,6 +65,7 @@ public class PersonServiceImpTest {
         Person expResult = person;
         Person result = instance.addPerson(person);
         assertEquals(expResult, result);
+        instance.deletePerson(person);
     }
 
     /**

@@ -16,4 +16,5 @@ public interface PublicAssociationHasPersonService {
 PublicAssociationHasPerson addPublicAssociationHasPerson(PublicAssociationHasPerson person);    
 PublicAssociationHasPerson getByPersonId(Integer personId);
 PublicAssociationHasPerson getByPostId(Integer postId);
+void deletePublicAssociationHasPerson(PublicAssociationHasPerson person);
 }

@@ -32,4 +32,9 @@ public class EnterpriseServiceImp implements EnterpriseService {
     public Enterprise getByName(String name){
         return enterpriseRepository.findByName(name);
     }
+    
+    @Override    
+    public void deleteEnterprise(Enterprise enterprise){
+        enterpriseRepository.delete(enterprise);
+    }
 }

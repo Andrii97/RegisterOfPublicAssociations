@@ -64,6 +64,7 @@ public class EnterpriseServiceImpTest {
         Enterprise result = instance.addEnterprise(enterprise);
         // assertEquals(expResult, result);
         assertNotNull(result);
+        instance.deleteEnterprise(enterprise);
     }
 
     /**

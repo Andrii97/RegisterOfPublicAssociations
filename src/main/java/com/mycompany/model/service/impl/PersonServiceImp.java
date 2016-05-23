@@ -31,4 +31,10 @@ public class PersonServiceImp implements PersonService{
     public Person getByName(String name){
         return personRepository.findByName(name);
     }
+    
+    @Override
+    public void deletePerson(Person person){
+        personRepository.delete(person);
+    }
+    
 }

@@ -86,6 +86,7 @@ public class PublicAssociationHasPersonServiceImpTest {
         PublicAssociationHasPerson expResult = publicAssociationPerson;
         PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result);
+        instance.deletePublicAssociationHasPerson(publicAssociationPerson);
     }
     
     @Test
@@ -112,6 +113,7 @@ public class PublicAssociationHasPersonServiceImpTest {
                 person, post);
         PublicAssociationHasPerson result2 = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result2);
+        instance.deletePublicAssociationHasPerson(publicAssociationPerson);
         
     }
 
