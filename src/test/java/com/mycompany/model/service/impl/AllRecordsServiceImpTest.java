@@ -63,6 +63,7 @@ public class AllRecordsServiceImpTest {
         AllRecords expResult = allRecords;
         AllRecords result = instance.addAllRecords(allRecords);
         assertEquals(expResult, result);
+        instance.deleteAllRecords(allRecords);
     }
 
     /**

@@ -13,4 +13,5 @@ import com.mycompany.model.entity.*;
 public interface AllRecordsService {
     AllRecords addAllRecords(AllRecords record);
     AllRecords getById(Integer Id);
+    void deleteAllRecords(AllRecords record);
 }

@@ -29,4 +29,9 @@ public class AllRecordsServiceImp implements AllRecordsService{
     public AllRecords getById(Integer id){
         return allRecordsRepository.findById(id);
     }
+    
+    @Override
+    public void deleteAllRecords(AllRecords record){
+        allRecordsRepository.delete(record);
+    }
 }

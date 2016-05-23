@@ -28,4 +28,9 @@ public class SymbolicServiceImp implements SymbolicService {
     public Symbolic getByPublicAssociationId(Integer id){
         return symbolicRepository.findByPublicAssociationId(id);
     }    
+    
+    @Override
+    public void deleteSymbolic(Symbolic symbolic){
+        symbolicRepository.delete(symbolic);
+    }
 }

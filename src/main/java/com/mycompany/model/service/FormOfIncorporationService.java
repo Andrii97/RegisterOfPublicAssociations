@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface FormOfIncorporationService {
     FormOfIncorporation getByName(String name);
+    
 }

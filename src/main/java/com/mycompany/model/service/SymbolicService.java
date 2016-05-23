@@ -12,4 +12,5 @@ import com.mycompany.model.entity.*;
 public interface SymbolicService {
     Symbolic addSymbolic(Symbolic symbolic);
     Symbolic getByPublicAssociationId(Integer id);
+    void deleteSymbolic(Symbolic symbolic);
 }
