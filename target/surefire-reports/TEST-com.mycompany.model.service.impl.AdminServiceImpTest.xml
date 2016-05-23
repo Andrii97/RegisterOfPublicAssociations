@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.mycompany.model.service.impl.AdminServiceImpTest" time="2.797" errors="1" skipped="0">
+<testsuite tests="2" failures="0" name="com.mycompany.model.service.impl.AdminServiceImpTest" time="2.793" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -62,7 +62,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mycompany.model.service.impl.AdminServiceImpTest" name="testAddAdmin" time="0.037">
+  <testcase classname="com.mycompany.model.service.impl.AdminServiceImpTest" name="testAddAdmin" time="0.03">
     <error message="Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null" type="org.springframework.dao.InvalidDataAccessApiUsageException">org.springframework.dao.InvalidDataAccessApiUsageException: Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null
 	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:384)
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:437)
@@ -152,32 +152,32 @@ Caused by: java.lang.IllegalArgumentException: Target object must not be null
     <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-мая 20, 2016 1:31:52 AM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+мая 20, 2016 1:47:46 AM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
 INFO: HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-мая 20, 2016 1:31:52 AM org.hibernate.Version logVersion
+мая 20, 2016 1:47:47 AM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {4.3.1.Final}
-мая 20, 2016 1:31:52 AM org.hibernate.cfg.Environment &lt;clinit&gt;
+мая 20, 2016 1:47:47 AM org.hibernate.cfg.Environment &lt;clinit&gt;
 INFO: HHH000206: hibernate.properties not found
-мая 20, 2016 1:31:52 AM org.hibernate.cfg.Environment buildBytecodeProvider
+мая 20, 2016 1:47:47 AM org.hibernate.cfg.Environment buildBytecodeProvider
 INFO: HHH000021: Bytecode provider name : javassist
-мая 20, 2016 1:31:53 AM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
+мая 20, 2016 1:47:47 AM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
 INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-Fri May 20 01:31:53 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-мая 20, 2016 1:31:53 AM org.hibernate.dialect.Dialect &lt;init&gt;
+Fri May 20 01:47:47 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+мая 20, 2016 1:47:47 AM org.hibernate.dialect.Dialect &lt;init&gt;
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-мая 20, 2016 1:31:53 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+мая 20, 2016 1:47:47 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
 INFO: HHH000397: Using ASTQueryTranslatorFactory
-Fri May 20 01:31:54 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-мая 20, 2016 1:31:54 AM org.hibernate.dialect.Dialect &lt;init&gt;
+Fri May 20 01:47:48 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+мая 20, 2016 1:47:48 AM org.hibernate.dialect.Dialect &lt;init&gt;
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-мая 20, 2016 1:31:54 AM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+мая 20, 2016 1:47:48 AM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
 INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
-мая 20, 2016 1:31:54 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
+мая 20, 2016 1:47:48 AM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory &lt;init&gt;
 INFO: HHH000397: Using ASTQueryTranslatorFactory
-Fri May 20 01:31:54 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Fri May 20 01:47:48 EEST 2016 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 </system-err>
   </testcase>
-  <testcase classname="com.mycompany.model.service.impl.AdminServiceImpTest" name="testGetByName" time="0.119"/>
+  <testcase classname="com.mycompany.model.service.impl.AdminServiceImpTest" name="testGetByName" time="0.123"/>
 </testsuite>
