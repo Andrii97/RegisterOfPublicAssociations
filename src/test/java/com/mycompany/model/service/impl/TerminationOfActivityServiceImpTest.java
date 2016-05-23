@@ -61,6 +61,7 @@ public class TerminationOfActivityServiceImpTest {
         TerminationOfActivity expResult = terminationOfActivity;
         TerminationOfActivity result = instance.addTerminationOfActivity(terminationOfActivity);
         assertEquals(expResult, result);
+        instance.deleteTerminationOfActivity(terminationOfActivity);
         */
     }
 

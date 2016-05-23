@@ -62,6 +62,7 @@ public class SymbolicServiceImpTest {
         Symbolic expResult = symbolic;
         Symbolic result = instance.addSymbolic(symbolic);
         assertEquals(expResult, result);
+        instance.deleteSymbolic(symbolic);
     }
 
     /**

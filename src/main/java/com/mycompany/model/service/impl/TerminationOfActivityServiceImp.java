@@ -29,4 +29,8 @@ public class TerminationOfActivityServiceImp implements TerminationOfActivitySer
         return terminationOfActivityRepository.findByPublicAssociationId(id);
     }    
     
+    @Override
+    public void deleteTerminationOfActivity(TerminationOfActivity terminationOfActivity){
+        terminationOfActivityRepository.delete(terminationOfActivity);
+    }
 }

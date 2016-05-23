@@ -13,4 +13,5 @@ import com.mycompany.model.entity.*;
 public interface AdminService {
     Admin addAdmin(Admin admin);
     Admin getByName(String name);
+    void deleteAdmin(Admin admin);
 }

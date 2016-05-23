@@ -30,4 +30,10 @@ public class AdminServiceImp implements AdminService{
     public Admin getByName(String name){
         return adminRepository.findByName(name);
     }
+    
+    @Override
+    public void deleteAdmin(Admin admin){
+        adminRepository.delete(admin);
+    }
+    
 }

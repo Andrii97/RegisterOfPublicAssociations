@@ -56,6 +56,7 @@ public class AdminServiceImpTest {
         Admin expResult = admin;
         Admin result = instance.addAdmin(admin);
         assertEquals(expResult, result);
+        instance.deleteAdmin(admin);
     }
 
     /**

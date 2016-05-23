@@ -13,4 +13,5 @@ import com.mycompany.model.entity.*;
 public interface TerminationOfActivityService {
     TerminationOfActivity addTerminationOfActivity(TerminationOfActivity terminationOfActivity);
     TerminationOfActivity getByPublicAssociationId(Integer id);
+    void deleteTerminationOfActivity(TerminationOfActivity terminationOfActivity);
 }
