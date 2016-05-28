@@ -1,8 +1,0 @@
-#surefire
-#Fri May 20 15:40:50 EEST 2016
-maven.ext.class.path=C\:\\Program Files\\NetBeans 8.1\\java\\maven-nblib\\netbeans-eventspy.jar
-user.dir=D\:\\\u0443\u043D\u0456\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\\2 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u041F\u0417\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\RegisterOfPublicAssociations
-file.encoding=UTF-8
-localRepository=C\:\\Users\\Andrii\\.m2\\repository
-netbeans.deploy=true
-basedir=D\:\\\u0443\u043D\u0456\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\\2 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u041A\u041F\u0417\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\RegisterOfPublicAssociations
