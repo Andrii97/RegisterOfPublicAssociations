@@ -42,3 +42,7 @@ th {
 .select-style select:focus {
     outline: none;
 }
+
+body, html{
+    color: red;
+}
