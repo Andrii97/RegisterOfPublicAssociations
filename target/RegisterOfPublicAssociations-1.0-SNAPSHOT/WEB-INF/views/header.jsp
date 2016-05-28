@@ -17,8 +17,12 @@
     <body>
         <c:url value="/login" var="login" />
         <c:url value="/mainpage" var="showMainpage"/>
+        <c:url value="/createpage" var="showCreatepage"/>
+        <c:url value="/editpage" var="showEditpage"/>
         <ul>
             <li><a href="${showMainpage}">Головна</a></li>
+            <li><a href="${showCreatepage}">Створення</a></li>
+            <li><a href="${showEditpage}">Редагування</a></li>
             <li style="float:right"><a href="${login}">Вхід в систему</a></li>
         </ul>
     </body>
