@@ -72,6 +72,7 @@ public class PublicAssociation  implements java.io.Serializable {
         this.secondLevelOfLocation = secondLevelOfLocation;
         this.thirdLevelOfLocation = thirdLevelOfLocation;
         this.fourthLevelOfLocation = fourthLevelOfLocation;
+        this.dateOfRegistration = new Date();
     }
     public PublicAssociation(Certificate certificate, FormOfIncorporation formOfIncorporation, Date dateOfRegistration, Date dateOfClosing, Date dateOfLastEvent, Integer legalPosition, String fullName, String shortName, String foreignLanguageName, Integer businessActivities, Integer usreouCode, String phoneNumber, String objective, String state, String address, int firstLevelOfLocation, int secondLevelOfLocation, int thirdLevelOfLocation, int fourthLevelOfLocation, Set<Enterprise> enterprises, Set<Kind> kinds, Set<Symbolic> symbolics, Set<Statuse> statuses, Set<PublicAssociationHasPerson> publicAssociationHasPersons, Set<PublicAssociation> publicAssociationsForPublicAssociationUnitId, TerminationOfActivity terminationOfActivity, Set<PublicAssociation> publicAssociationsForPublicAssociationId) {
        this.certificate = certificate;

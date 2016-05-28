@@ -38,7 +38,7 @@
         </div>
         
         
-            <form method="post" action="addrecord">
+            <form method="post" action="createpage">
                 <% String errorMessage = (String)request.getAttribute("createResult"); %>
                 <%
                     if(errorMessage != null)
@@ -88,10 +88,10 @@
                         <div class="form-group">
                             <label>Вид організації: </label>
                             <select name="kind">
-                                <option value="" selected>Не встановлено</option>
-                                <option value="Kind 1">Освітня або культурно-виховна</option>
-                                <option value="Kind 2">Правозахисна</option>
-                                <option value="Kind 3">Інша</option>
+                                <option value="Не встановлено" selected>Не встановлено</option>
+                                <c:forEach items="${kinds}" var="kind">
+                                    <option>${kind.name}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
@@ -107,32 +107,32 @@
                     </div>
                     <p style="font-weight: bold;">Рівні місцерозташування<span style="color:red;">*</span></p>
                     <div class="form-group" class="row" style="text-align: center">
-                        <input placeholder="Перший рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel"  onBlur="if(this.value=='')this.value='0'">
-                        <input placeholder="Другий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" onBlur="if(this.value=='')this.value='0'">
-                        <input placeholder="Третій рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" onBlur="if(this.value=='')this.value='0'">            
-                        <input placeholder="Четвертий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" onBlur="if(this.value=='')this.value='0'">
+                        <label>Перший рівень:</label>
+                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel" value="0" onBlur="if(this.value=='')this.value='0'">
+                        <label>Другий рівень:</label>
+                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" value="0" onBlur="if(this.value=='')this.value='0'">
+                        <label>Третій рівень:</label>
+                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" value="0" onBlur="if(this.value=='')this.value='0'">            
+                        <label>Четвертий рівень:</label>
+                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" value="0" onBlur="if(this.value=='')this.value='0'">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label>Статус: </label>
                         <select name="statuse">
-                            <option value="Statuse 0" selected>Не встановлено</option>
-                            <option value="Statuse 1">Всеукраїнський</option>
-                            <option value="Statuse 2">Міжнародний</option>
-                            <option value="Statuse 3">Місцевий</option>
-                            <option value="Statuse 4">Обласний</option>
-                            <option value="Statuse 5">Первинний</option>
-                            <option value="Statuse 6">Регіональний</option>
-                            <option value="Statuse 7">Республіканський</option>
+                            <option value="Не встановлено" selected>Не встановлено</option>
+                            <c:forEach items="${statuses}" var="statuse">
+                                <option>${statuse.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label>Стан<span style="color:red;">*</span>: </label>
                         <select name="state">
-                            <option value="Statuse 0" selected>Не встановлено</option>
+                            <option value="Не встановлено" selected>Не встановлено</option>
                             <option value="Зареєстровано">Зареєстровано</option>
-                            <option value="Не зареєстровано">Незареєстровано</option>
+                            <option value="Незареєстровано">Незареєстровано</option>
                         </select>
                     </div>
                 </div>

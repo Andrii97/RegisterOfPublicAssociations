@@ -47,14 +47,9 @@ public class MainController{
     
     @RequestMapping(value = {"", "mainpage"}, method = RequestMethod.GET)
     public String mainpage(ModelAndView mav, ModelMap map){
-        List<Kind> kinds;
-        kinds = kindRepository.findAll();
-        List<FormOfIncorporation> formOfIncorporations;
-        formOfIncorporations = formOfIncorporationRepository.findAll();
-        System.out.println("I am here");
-        map.put("kinds", kinds);
+        map.put("kinds", kindRepository.findAll());
         map.put("name", "Andrii");
-        map.put("formOfIncorporations", formOfIncorporations);
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
         // TO DO:
@@ -65,7 +60,7 @@ public class MainController{
         return "mainpage";
     }
     
-    @RequestMapping(value = "/addrecord", method = RequestMethod.POST)
+    @RequestMapping(value = "createpage", method = RequestMethod.POST)
     public String addrecord(@RequestParam(value = "fullname")String fullname,
                                  @RequestParam(value = "shortname")String shortname,
                                  @RequestParam(value = "foreignname")String foreignname,
@@ -80,30 +75,36 @@ public class MainController{
                                  @RequestParam(value = "thirdlevel")Integer thirdlevel,
                                  @RequestParam(value = "fourthlevel")Integer fourthlevel,
                                  ModelMap map){
-
-        if (fullname != null && formOfIncorporation != null && statuse != null &&
-                kind.equals("Не встановлено")){
-        PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationRepository.findByName(formOfIncorporation), 
-                fullname, statuse, firstlevel, secondlevel, thirdlevel, fourthlevel);
+        map.put("kinds", kindRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        
+        if (!fullname.equals("") && !formOfIncorporation.equals("Не встановлено") && !state.equals("Не встановлено"))
+        {
+            PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationRepository.findByName(formOfIncorporation), 
+                fullname, state, firstlevel, secondlevel, thirdlevel, fourthlevel);
             publicAssociation.setShortName(shortname);
             publicAssociation.setForeignLanguageName(foreignname);
             publicAssociation.setObjective(objective);
             publicAssociation.setAddress(address);
-            publicAssociation.setState(statuse);
-
+            
+            if(!kind.equals("Не встановлено")){
             Set<Kind> kinds = new HashSet<>();
             kinds.add(kindRepository.findByName(kind));
             publicAssociation.setKinds(kinds);
-
+            }
+            
+            if(!statuse.equals("Не встановлено")){
             Set<Statuse> statuses = new HashSet<>();
             statuses.add(statuseRepository.findByName(statuse));
             publicAssociation.setStatuses(statuses);
-
+            }
             publicAssociationServiceImp.addPublicAssociation(publicAssociation);
 
         }
         else{            
-        map.put("createResult", "Незаповнені обов'язкові поля");
+            map.put("createResult", "Незаповнені обов'язкові поля");
         }
         try(FileWriter writer = new FileWriter("D://test1.txt", false)){
             writer.append(thirdlevel.toString());
@@ -114,23 +115,26 @@ public class MainController{
         }
         return "createpage";
     }
-    
+    /*
     @RequestMapping(value = "mainpage", params = "again", method = RequestMethod.GET)
     public String showmainpage(ModelAndView mav){
         return "mainpage";
-    }
+    }*/
     
-    @RequestMapping(value = "mainpage/show", method = RequestMethod.POST)
+    @RequestMapping(value = "mainpage", method = RequestMethod.POST)
     public String searchPublicAssociations(@RequestParam(value = "FullName")String fullname,
                                  @RequestParam(value = "Status")String status,
                                  @RequestParam(value = "FormOfIncorporation")String formOfIncorporation,
                                  ModelMap map){
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findByFullName(fullname));
+        map.put("firstLevelOfLocations", null);//firstLevelOfLocationRepository.findAll());
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
         
-        System.out.println(map);
-        System.out.println(fullname);
-        System.out.println(status);
-        System.out.println(formOfIncorporation);
-        map.put("publicAssociations", null);
         return "mainpage";
     }
     
@@ -141,12 +145,8 @@ public class MainController{
     
     @RequestMapping(value = "createpage", method = RequestMethod.GET)
     public String createpage(ModelAndView mav, ModelMap map){
-        ArrayList<Kind> kinds;
-        kinds = new ArrayList<>();
-        kinds.add(kindRepository.findByName("Правозахисна"));
-        kinds.add(new Kind("__________2_____________"));
-        System.out.println("I am here");
-        map.put("kinds", kinds);
+        map.put("kinds", kindRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
         map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         return "createpage";
