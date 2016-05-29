@@ -13,99 +13,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
         <link rel="stylesheet" href="/resources/css/navbar.css">
-<<<<<<< HEAD
-        <link rel="stylesheet" href="/resources/methodView.css">
-        <title>Title</title>
-        <title>JSP Page</title>
-    </head>
-    <body>
-    <div class="container">
-        <h2>${name}</h2>
-        <h2>${kinds[0].name}</h2>
-        <div class="container">
-            <%@include file="header1.jsp"%>
-            <br>
-            <br>
-            <br>
-        </div>
-    <h1>Створити організацію</h1>        
-    <fieldset>
-        <form method="post" action="addrecord">
-            <div>
-                <label>Повна назва: </label>
-                    <input path="Name" name="fullname" type="text" id="name"/>
-            </div>
-            <div>
-                <label>Скорочена назва: </label>
-                <input type="text" name="shortname">
-            </div>
-            <div>
-                <label>Назва іноземною мовою: </label>
-                <input type="text" name="foreignname">
-            </div>
-            <div>
-                <label>Організаційно правова форма: </label>
-                <select name="formOfIncorporation">
-                    <option value="FormOfIncorporation 0" selected>Не встановлено</option>
-                    <option value="Громадська організація" selected>Громадська організація</option>
-                    <option value="Громадська спілка" selected>Громадська спілка</option>
-                </select>
-            </div>
-            <div>
-                <label>Вид організації: </label>
-                <select name="kind">
-                    <option value="Kind 0" selected>Не встановлено</option>
-                    <option value="Kind 1" selected>Освітня або культурно-виховна</option>
-                    <option value="Kind 2" selected>Правозахисна</option>
-                    <option value="Kind 3" selected>Інша</option>
-                </select>
-            </div>
-            <div>
-                <label>Ціль громадської організації: </label>
-                <input type="text" name="objective">
-            </div>
-            <div>
-                <label>Статус: </label>
-                <select name="statuse">
-                    <option value="Statuse 0" selected>Не встановлено</option>
-                    <option value="Statuse 1" selected>Всеукраїнський</option>
-                    <option value="Statuse 2" selected>Міжнародний</option>
-                    <option value="Statuse 3" selected>Місцевий</option>
-                    <option value="Statuse 4" selected>Обласний</option>
-                    <option value="Statuse 5" selected>Первинний</option>
-                    <option value="Statuse 6" selected>Регіональний</option>
-                    <option value="Statuse 7" selected>Республіканський</option>
-                </select>
-            </div>
-            <div>
-                <label>Адреса: </label>
-                <input type="text" name="address">
-            </div>
-            <div>
-                <label>Перший рівень місцезнаходження: </label>
-                <input type="text" name="firstlevel">
-            </div>
-            <div>
-                <label>Другий рівень місцезнаходження: </label>
-                <input type="text" name="secondlevel">
-            </div>
-            <div>
-                <label>Третій рівень місцезнаходження: </label>
-                <input type="text" name="thirdlevel">
-            </div>
-            <div>
-                <label>Четвертий рівень місцезнаходження: </label>
-                <input type="text" name="fourthlevel">
-            </div>
-            <div align="right">
-                <button class="btn btn-primary" type="submit">
-                    Створити
-                </button>
-            </div>
-        </form>
-    </fieldset>
-    </div>
-=======
         
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -148,13 +55,13 @@
                 <div class="container">
                 <div class="form-group row">
                     <p style="position:relative;float:left;font-weight:bold;"><span style="color:red;">*</span> - обов'язкові поля</p>
-                </div>                
+                </div>
                 <div class="form-group" class="row" style="width: 100%">    
                     <h4 style="font-weight: bold;">Параметри імен</h4>
                     <div class="col-md-6" style="text-align: center">
                         <label>Повна назва<span style="color:red;">*</span>: </label>
                         <br>
-                        <input path="Name" class="form-control" name="fullname" type="text" id="name" style="width: 100%;"/>
+                        <input class="form-control" name="fullname" type="text" style="width: 100%;"/>
                     </div>
                     <div class="col-md-3" style="text-align: center">
                         <label>Скорочена назва: </label>
@@ -181,10 +88,10 @@
                         <div class="form-group">
                             <label>Вид організації: </label>
                             <select name="kind">
-                                <option value="" selected>Не встановлено</option>
-                                <option value="Kind 1">Освітня або культурно-виховна</option>
-                                <option value="Kind 2">Правозахисна</option>
-                                <option value="Kind 3">Інша</option>
+                                <option value="Не встановлено" selected>Не встановлено</option>
+                                <c:forEach items="${kinds}" var ="kind">
+                                    <option>${kind.name}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
@@ -200,30 +107,26 @@
                     </div>
                     <p style="font-weight: bold;">Рівні місцерозташування<span style="color:red;">*</span></p>
                     <div class="form-group" class="row" style="text-align: center">
-                        <input placeholder="Перший рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel"  onBlur="if(this.value=='')this.value='0'">
-                        <input placeholder="Другий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" onBlur="if(this.value=='')this.value='0'">
-                        <input placeholder="Третій рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" onBlur="if(this.value=='')this.value='0'">            
-                        <input placeholder="Четвертий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" onBlur="if(this.value=='')this.value='0'">
+                        <input placeholder="Перший рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
+                        <input placeholder="Другий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
+                        <input placeholder="Третій рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">            
+                        <input placeholder="Четвертий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label>Статус: </label>
                         <select name="statuse">
-                            <option value="Statuse 0" selected>Не встановлено</option>
-                            <option value="Statuse 1">Всеукраїнський</option>
-                            <option value="Statuse 2">Міжнародний</option>
-                            <option value="Statuse 3">Місцевий</option>
-                            <option value="Statuse 4">Обласний</option>
-                            <option value="Statuse 5">Первинний</option>
-                            <option value="Statuse 6">Регіональний</option>
-                            <option value="Statuse 7">Республіканський</option>
+                                <option value="Не встановлено" selected>Не встановлено</option>
+                                <c:forEach items="${statuses}" var ="statuse">
+                                    <option>${statuse.name}</option>
+                                </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label>Стан<span style="color:red;">*</span>: </label>
                         <select name="state">
-                            <option value="Statuse 0" selected>Не встановлено</option>
+                            <option value="Не встановлено" selected>Не встановлено</option>
                             <option value="Зареєстровано">Зареєстровано</option>
                             <option value="Не зареєстровано">Незареєстровано</option>
                         </select>
@@ -237,6 +140,5 @@
                 
             </form>
         </div>
->>>>>>> AndriiRepository/master
     </body>
 </html>

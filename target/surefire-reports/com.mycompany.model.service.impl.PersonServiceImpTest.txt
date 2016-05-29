@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.model.service.impl.PersonServiceImpTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 sec
-=======
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 sec
->>>>>>> AndriiRepository/master
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 sec

@@ -16,16 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import com.mycompany.model.entity.Kind;
-<<<<<<< HEAD
-import com.mycompany.model.entity.Nationality;
-import com.mycompany.model.entity.Person;
-import com.mycompany.model.entity.PublicAssociation;
-import com.mycompany.model.repository.KindRepository;
-import com.mycompany.model.repository.NationalityRepository;
-import com.mycompany.model.service.impl.FormOfIncorporationServiceImp;
-import com.mycompany.model.service.impl.PersonServiceImp;
-import com.mycompany.model.service.impl.PublicAssociationServiceImp;
-=======
 import com.mycompany.model.entity.PublicAssociation;
 import com.mycompany.model.entity.Statuse;
 import com.mycompany.model.repository.FormOfIncorporationRepository;
@@ -34,8 +24,8 @@ import com.mycompany.model.repository.StatuseRepository;
 import com.mycompany.model.service.impl.PublicAssociationServiceImp;
 import java.io.IOException;
 import java.util.*;
->>>>>>> AndriiRepository/master
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
@@ -45,16 +35,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class MainController{
     @Autowired
-<<<<<<< HEAD
-    public KindRepository kindRepository;
-    @Autowired
-    public NationalityRepository nationalityRepository;
-    @Autowired
-    public FormOfIncorporationServiceImp formOfIncorporationServiceImp;
-    @Autowired
-    public PublicAssociationServiceImp instance;
-    
-=======
     KindRepository kindRepository;
     @Autowired
     FormOfIncorporationRepository formOfIncorporationRepository;
@@ -65,22 +45,15 @@ public class MainController{
     @Autowired
     public PublicAssociationServiceImp publicAssociationServiceImp;
 
->>>>>>> AndriiRepository/master
     
     @RequestMapping(value = {"", "mainpage"}, method = RequestMethod.GET)
     public String mainpage(ModelAndView mav, ModelMap map){
-        List<Kind> kinds;
-        kinds = kindRepository.findAll();
-        List<FormOfIncorporation> formOfIncorporations;
-        formOfIncorporations = formOfIncorporationRepository.findAll();
-        System.out.println("I am here");
-        map.put("kinds", kinds);
+        map.put("kinds", kindRepository.findAll());
         map.put("name", "Andrii");
-        map.put("formOfIncorporations", formOfIncorporations);
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        // TO DO:
-        map.put("firstLevelOfLocations", null);//firstLevelOfLocationRepository.findAll());
+        map.put("firstLevelOfLocations", null);
         map.put("secondLevelOfLocations", null);
         map.put("thirdLevelOfLocations", null);
         
@@ -102,37 +75,41 @@ public class MainController{
                                  @RequestParam(value = "thirdlevel")Integer thirdlevel,
                                  @RequestParam(value = "fourthlevel")Integer fourthlevel,
                                  ModelMap map){
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
 
-        if (fullname != null && formOfIncorporation != null && statuse != null &&
-                kind.equals("Не встановлено")){
-        PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationRepository.findByName(formOfIncorporation), 
-                fullname, statuse, firstlevel, secondlevel, thirdlevel, fourthlevel);
+        if (!fullname.equals("") && !formOfIncorporation.equals("Не встановлено") && !state.equals("Не встановлено") && firstlevel!=null){
+            PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationRepository.findByName(formOfIncorporation), 
+                    fullname, statuse, firstlevel, secondlevel, thirdlevel, fourthlevel);
             publicAssociation.setShortName(shortname);
             publicAssociation.setForeignLanguageName(foreignname);
             publicAssociation.setObjective(objective);
             publicAssociation.setAddress(address);
-            publicAssociation.setState(statuse);
-
+            publicAssociation.setState(state);
+            
+            if(!kind.equals("Не встановлено")){
             Set<Kind> kinds = new HashSet<>();
             kinds.add(kindRepository.findByName(kind));
             publicAssociation.setKinds(kinds);
-
+            }
+            
+            if(!statuse.equals("Не встановлено")){
             Set<Statuse> statuses = new HashSet<>();
             statuses.add(statuseRepository.findByName(statuse));
             publicAssociation.setStatuses(statuses);
+            }
 
             publicAssociationServiceImp.addPublicAssociation(publicAssociation);
 
         }
         else{            
         map.put("createResult", "Незаповнені обов'язкові поля");
-        }
-        try(FileWriter writer = new FileWriter("D://test1.txt", false)){
-            writer.append(thirdlevel.toString());
-            writer.flush();
-        }
-        catch(IOException e){
-
         }
         return "createpage";
     }
@@ -163,15 +140,124 @@ public class MainController{
     
     @RequestMapping(value = "createpage", method = RequestMethod.GET)
     public String createpage(ModelAndView mav, ModelMap map){
-        ArrayList<Kind> kinds;
-        kinds = new ArrayList<>();
-        kinds.add(kindRepository.findByName("Правозахисна"));
-        kinds.add(new Kind("__________2_____________"));
-        System.out.println("I am here");
-        map.put("kinds", kinds);
+        map.put("kinds", kindRepository.findAll());
         map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
         return "createpage";
+        
+    }
+    
+    @RequestMapping(value = "/editpage", method = RequestMethod.POST)
+    public String editpage(      @RequestParam(value = "realname")String realname,
+                                 @RequestParam(value = "fullname")String fullname,
+                                 @RequestParam(value = "shortname")String shortname,
+                                 @RequestParam(value = "foreignname")String foreignname,
+                                 @RequestParam(value = "FormOfIncorporation")String formOfIncorporation,
+                                 //@RequestParam(value = "kind")String kind,
+                                 @RequestParam(value = "objective")String objective,
+                                 //@RequestParam(value = "statuse")String statuse,
+                                 @RequestParam(value = "state")String state,
+                                 @RequestParam(value = "address")String address,
+                                 @RequestParam(value = "firstlevel")Integer firstlevel,
+                                 @RequestParam(value = "secondlevel")Integer secondlevel,
+                                 @RequestParam(value = "thirdlevel")Integer thirdlevel,
+                                 @RequestParam(value = "fourthlevel")Integer fourthlevel,
+                                 ModelMap map){
+        
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
+        
+        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName(realname);
+        
+        if(!fullname.equals(""))
+            publicAssociation.setFullName(fullname);
+        
+        if(!shortname.equals(""))
+            publicAssociation.setShortName(shortname);
+        
+        if(!foreignname.equals(""))
+            publicAssociation.setForeignLanguageName(foreignname);
+        
+        if(!formOfIncorporation.equals("Не встановлено"))
+            publicAssociation.setFormOfIncorporation(formOfIncorporationRepository.findByName(formOfIncorporation));
+        
+        /*if(!kind.equals("Не встановлено")){
+            Set<Kind> kinds = new HashSet<>();
+            kinds.add(kindRepository.findByName(kind));
+            publicAssociation.setKinds(kinds);
+        }*/
+        
+        if(!objective.equals(""))
+            publicAssociation.setObjective(objective);
+        
+        /*if(!statuse.equals("Не встановлено")){
+            Set<Statuse> statuses = new HashSet<>();
+            statuses.add(statuseRepository.findByName(statuse));
+            publicAssociation.setStatuses(statuses);
+        }*/
+        
+        if(!address.equals(""))
+            publicAssociation.setAddress(address);
+        
+        if(!state.equals("Не встановлено"))
+            publicAssociation.setState(state);
+        
+        if(firstlevel != null)
+            publicAssociation.setFirstLevelOfLocation(firstlevel);
+        
+        if(secondlevel != null)
+            publicAssociation.setSecondLevelOfLocation(secondlevel);
+        
+        if(thirdlevel != null)
+            publicAssociation.setThirdLevelOfLocation(thirdlevel);
+        
+        publicAssociationRepository.saveAndFlush(publicAssociation);
+        
+        map.put("choosenassociation", publicAssociation);
+        /*
+        try(FileWriter writer = new FileWriter("D://test1.txt", false)){
+            writer.append(publicAssociation.getShortName());
+            writer.flush();
+        }
+        catch(IOException e){
+
+        }*/
+        return "findpage";
+    }
+    
+    @RequestMapping(value = "findpage", method = RequestMethod.GET)
+    public String findpage(ModelMap map){
+        return "findpage";
+    }
+    
+    @RequestMapping(value = "findname", method = RequestMethod.POST)
+    public String findname(@RequestParam(value = "editname")String editname, ModelMap map){ 
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);       
+        if(publicAssociationRepository.findByFullName(editname) != null){
+            map.put("choosenassociation", publicAssociationRepository.findByFullName(editname));
+            return "editpage";
+        }
+        else
+            map.put("createResult", "Організації з таким ім'ям відсутні");
+        return "findpage";
     }
 
     @RequestMapping(value = "login", params = "again")
@@ -185,51 +271,9 @@ public class MainController{
         return "mainpage";
     }
     
-<<<<<<< HEAD
-    @RequestMapping(value = "createpage", method = RequestMethod.GET)
-    public String createpage(ModelAndView mav, ModelMap map){
-        ArrayList<Kind> kinds;
-        kinds = new ArrayList<>();
-        kinds.add(kindRepository.findByName("Правозахисна"));
-        kinds.add(new Kind("__________2_____________"));
-        System.out.println("I am here");
-        map.put("kinds", kinds);
-        map.put("name", "Andrii");
-        return "createpage";
-    }
-    
-    @RequestMapping(value = "/addrecord", method = RequestMethod.POST)
-    public String addrecord(@RequestParam(value = "fullname")String fullname,
-                                 @RequestParam(value = "shortname")String shortname,
-                                 @RequestParam(value = "foreignname")String foreignname,
-                                 @RequestParam(value = "formOfIncorporation")String formOfIncorporation,
-                                 @RequestParam(value = "kind")String kind,
-                                 @RequestParam(value = "objective")String objective,
-                                 @RequestParam(value = "statuse")String statuse,
-                                 @RequestParam(value = "address")String address,
-                                 @RequestParam(value = "firstlevel")String firstlevel,
-                                 @RequestParam(value = "secondlevel")String secondlevel,
-                                 @RequestParam(value = "thirdlevel")String thirdlevel,
-                                 @RequestParam(value = "fourthlevel")String fourthlevel,
-                                 ModelMap map){
-        if(fullname == "yer"){
-        PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationServiceImp.getByName(formOfIncorporation), 
-                fullname, "Незареєстровано", 5, 5, 5, 5);
-        PublicAssociation expResult = publicAssociation;
-        PublicAssociation result = instance.addPublicAssociation(publicAssociation);
-        }
-        return "createpage";
-    }
-    
-    @RequestMapping(value = "editpage", method = RequestMethod.GET)
-    public String editpage(ModelAndView mav){
-        return "editpage";
-    }
-=======
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     public String admin(ModelAndView mav){
         return "adminpage";
     }    
     
->>>>>>> AndriiRepository/master
 }
