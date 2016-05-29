@@ -25,6 +25,7 @@ import com.mycompany.model.service.impl.PublicAssociationServiceImp;
 import java.io.IOException;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
@@ -52,8 +53,7 @@ public class MainController{
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        // TO DO:
-        map.put("firstLevelOfLocations", null);//firstLevelOfLocationRepository.findAll());
+        map.put("firstLevelOfLocations", null);
         map.put("secondLevelOfLocations", null);
         map.put("thirdLevelOfLocations", null);
         
@@ -76,11 +76,16 @@ public class MainController{
                                  @RequestParam(value = "fourthlevel")Integer fourthlevel,
                                  ModelMap map){
         map.put("kinds", kindRepository.findAll());
-        map.put("statuses", statuseRepository.findAll());
         map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
         
-        if (!fullname.equals("") && !formOfIncorporation.equals("Не встановлено") && !state.equals("Не встановлено"))
+        if (!fullname.equals("") && !formOfIncorporation.equals("Не встановлено") && !state.equals("Не встановлено")
+                && firstlevel != null && secondlevel != null && thirdlevel != null && fourthlevel != null)
         {
             PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationRepository.findByName(formOfIncorporation), 
                 fullname, state, firstlevel, secondlevel, thirdlevel, fourthlevel);
@@ -88,6 +93,7 @@ public class MainController{
             publicAssociation.setForeignLanguageName(foreignname);
             publicAssociation.setObjective(objective);
             publicAssociation.setAddress(address);
+            publicAssociation.setState(state);
             
             if(!kind.equals("Не встановлено")){
             Set<Kind> kinds = new HashSet<>();
@@ -105,13 +111,6 @@ public class MainController{
         }
         else{            
             map.put("createResult", "Незаповнені обов'язкові поля");
-        }
-        try(FileWriter writer = new FileWriter("D://test1.txt", false)){
-            writer.append(thirdlevel.toString());
-            writer.flush();
-        }
-        catch(IOException e){
-
         }
         return "createpage";
     }
@@ -134,6 +133,7 @@ public class MainController{
         map.put("firstLevelOfLocations", null);//firstLevelOfLocationRepository.findAll());
         map.put("secondLevelOfLocations", null);
         map.put("thirdLevelOfLocations", null);
+        map.put("fourthLevelOfLocations", null);
         
         return "mainpage";
     }
@@ -149,7 +149,128 @@ public class MainController{
         map.put("statuses", statuseRepository.findAll());
         map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
+        map.put("fourthLevelOfLocations", null);
         return "createpage";
+        
+    }
+    
+    @RequestMapping(value = "/editpage", method = RequestMethod.POST)
+    public String editpage(      @RequestParam(value = "realname")String realname,
+                                 @RequestParam(value = "fullname")String fullname,
+                                 @RequestParam(value = "shortname")String shortname,
+                                 @RequestParam(value = "foreignname")String foreignname,
+                                 @RequestParam(value = "FormOfIncorporation")String formOfIncorporation,
+                                 //@RequestParam(value = "kind")String kind,
+                                 @RequestParam(value = "objective")String objective,
+                                 //@RequestParam(value = "statuse")String statuse,
+                                 @RequestParam(value = "state")String state,
+                                 @RequestParam(value = "address")String address,
+                                 @RequestParam(value = "firstlevel")Integer firstlevel,
+                                 @RequestParam(value = "secondlevel")Integer secondlevel,
+                                 @RequestParam(value = "thirdlevel")Integer thirdlevel,
+                                 @RequestParam(value = "fourthlevel")Integer fourthlevel,
+                                 ModelMap map){
+        
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);
+        map.put("fourthLevelOfLocations", null);
+        
+        PublicAssociation publicAssociation = publicAssociationRepository.findOneByFullName(realname);
+        
+        if(!fullname.equals(""))
+            publicAssociation.setFullName(fullname);
+        
+        if(!shortname.equals(""))
+            publicAssociation.setShortName(shortname);
+        
+        if(!foreignname.equals(""))
+            publicAssociation.setForeignLanguageName(foreignname);
+        
+        if(!formOfIncorporation.equals("Не встановлено"))
+            publicAssociation.setFormOfIncorporation(formOfIncorporationRepository.findByName(formOfIncorporation));
+        
+        /*if(!kind.equals("Не встановлено")){
+            Set<Kind> kinds = new HashSet<>();
+            kinds.add(kindRepository.findByName(kind));
+            publicAssociation.setKinds(kinds);
+        }*/
+        
+        if(!objective.equals(""))
+            publicAssociation.setObjective(objective);
+        
+        /*if(!statuse.equals("Не встановлено")){
+            Set<Statuse> statuses = new HashSet<>();
+            statuses.add(statuseRepository.findByName(statuse));
+            publicAssociation.setStatuses(statuses);
+        }*/
+        
+        if(!address.equals(""))
+            publicAssociation.setAddress(address);
+        
+        if(!state.equals("Не встановлено"))
+            publicAssociation.setState(state);
+        
+        if(firstlevel != null)
+            publicAssociation.setFirstLevelOfLocation(firstlevel);
+        
+        if(secondlevel != null)
+            publicAssociation.setSecondLevelOfLocation(secondlevel);
+        
+        if(thirdlevel != null)
+            publicAssociation.setThirdLevelOfLocation(thirdlevel);
+        
+        if(fourthlevel != null)
+            publicAssociation.setThirdLevelOfLocation(fourthlevel);
+        
+        publicAssociationRepository.saveAndFlush(publicAssociation);
+        
+        map.put("choosenassociation", publicAssociation);
+        /*
+        try(FileWriter writer = new FileWriter("D://test1.txt", false)){
+            writer.append(publicAssociation.getShortName());
+            writer.flush();
+        }
+        catch(IOException e){
+
+        }*/
+        return "findpage";
+    }
+    
+    @RequestMapping(value = "findpage", method = RequestMethod.GET)
+    public String findpage(ModelMap map){
+        return "findpage";
+    }
+    
+    @RequestMapping(value = "findname", method = RequestMethod.POST)
+    public String findname(@RequestParam(value = "editname")String editname, ModelMap map){ 
+        map.put("kinds", kindRepository.findAll());
+        map.put("name", "Andrii");
+        map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("statuses", statuseRepository.findAll());
+        map.put("firstLevelOfLocations", null);
+        map.put("secondLevelOfLocations", null);
+        map.put("thirdLevelOfLocations", null);     
+        map.put("fourthLevelOfLocations", null);
+        
+        if(publicAssociationRepository.findOneByFullName(editname) != null){
+            map.put("choosenassociation", publicAssociationRepository.findOneByFullName(editname));
+            return "editpage";
+        }
+        else
+            map.put("createResult", "Організації з таким ім'ям відсутні");
+        return "findpage";
     }
 
     @RequestMapping(value = "login", params = "again")

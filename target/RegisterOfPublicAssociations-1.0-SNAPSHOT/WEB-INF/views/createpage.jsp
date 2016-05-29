@@ -55,13 +55,13 @@
                 <div class="container">
                 <div class="form-group row">
                     <p style="position:relative;float:left;font-weight:bold;"><span style="color:red;">*</span> - обов'язкові поля</p>
-                </div>                
+                </div>
                 <div class="form-group" class="row" style="width: 100%">    
                     <h4 style="font-weight: bold;">Параметри імен</h4>
                     <div class="col-md-6" style="text-align: center">
                         <label>Повна назва<span style="color:red;">*</span>: </label>
                         <br>
-                        <input path="Name" class="form-control" name="fullname" type="text" id="name" style="width: 100%;"/>
+                        <input class="form-control" name="fullname" type="text" style="width: 100%;"/>
                     </div>
                     <div class="col-md-3" style="text-align: center">
                         <label>Скорочена назва: </label>
@@ -107,14 +107,10 @@
                     </div>
                     <p style="font-weight: bold;">Рівні місцерозташування<span style="color:red;">*</span></p>
                     <div class="form-group" class="row" style="text-align: center">
-                        <label>Перший рівень:</label>
-                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel" value="0" onBlur="if(this.value=='')this.value='0'">
-                        <label>Другий рівень:</label>
-                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" value="0" onBlur="if(this.value=='')this.value='0'">
-                        <label>Третій рівень:</label>
-                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" value="0" onBlur="if(this.value=='')this.value='0'">            
-                        <label>Четвертий рівень:</label>
-                        <input class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" value="0" onBlur="if(this.value=='')this.value='0'">
+                        <input placeholder="Перший рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="firstlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
+                        <input placeholder="Другий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="secondlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
+                        <input placeholder="Третій рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="thirdlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">            
+                        <input placeholder="Четвертий рівень" class="form-control" style="width: 30%;margin-left: 35%;" type="number" name="fourthlevel" onBlur="if(this.value=='' || this.value < 0)this.value='0'">
                     </div>
                 </div>
                 <div class="row">

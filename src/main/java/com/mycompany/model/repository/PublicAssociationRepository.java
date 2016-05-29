@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PublicAssociationRepository extends JpaRepository<PublicAssociation, Integer>{
     List<PublicAssociation> findByFullName(String name);
+    PublicAssociation findOneByFullName(String name);
 }

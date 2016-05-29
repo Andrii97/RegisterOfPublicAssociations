@@ -69,12 +69,12 @@ public class AllRecordsServiceImpTest {
     /**
      * Test of getById method, of class AllRecordsServiceImp.
      */
-    @Test
+    /*@Test
     public void testGetById() {
         System.out.println("getById");
         Integer id = 1;
         AllRecords result = instance.getById(id);
         assertNotNull(result);
-    }
+    }*/
     
 }

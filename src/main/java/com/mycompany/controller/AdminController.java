@@ -13,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.model.entity.Admin;
 import com.mycompany.model.service.AdminService;
-
 /**
  *
  * @author Andrii
