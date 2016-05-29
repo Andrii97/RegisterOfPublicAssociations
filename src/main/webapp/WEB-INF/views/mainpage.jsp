@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form method="post" action="mainpages">
+                <form method="post" action="mainpage">
                     <div class="form-group" style="text-align: center" >
                         <label>Назва громадського об'єднання</label><br>
                         <input class="form-control" name="FullName" type="text" style="width: 100%" autofocus>

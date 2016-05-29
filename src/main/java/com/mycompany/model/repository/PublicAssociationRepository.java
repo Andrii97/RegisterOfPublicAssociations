@@ -5,6 +5,7 @@
  */
 package com.mycompany.model.repository;
 import com.mycompany.model.entity.*;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PublicAssociationRepository extends JpaRepository<PublicAssociation, Integer>{
-    PublicAssociation findByFullName(String name);
+    List<PublicAssociation> findByFullName(String name);
+    PublicAssociation findOneByFullName(String name);
 }

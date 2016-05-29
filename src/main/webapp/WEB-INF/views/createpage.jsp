@@ -38,7 +38,7 @@
         </div>
         
         
-            <form method="post" action="addrecord">
+            <form method="post" action="createpage">
                 <% String errorMessage = (String)request.getAttribute("createResult"); %>
                 <%
                     if(errorMessage != null)
@@ -89,7 +89,7 @@
                             <label>Вид організації: </label>
                             <select name="kind">
                                 <option value="Не встановлено" selected>Не встановлено</option>
-                                <c:forEach items="${kinds}" var ="kind">
+                                <c:forEach items="${kinds}" var="kind">
                                     <option>${kind.name}</option>
                                 </c:forEach>
                             </select>
@@ -117,10 +117,10 @@
                     <div class="col-md-6">
                         <label>Статус: </label>
                         <select name="statuse">
-                                <option value="Не встановлено" selected>Не встановлено</option>
-                                <c:forEach items="${statuses}" var ="statuse">
-                                    <option>${statuse.name}</option>
-                                </c:forEach>
+                            <option value="Не встановлено" selected>Не встановлено</option>
+                            <c:forEach items="${statuses}" var="statuse">
+                                <option>${statuse.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-6">
@@ -128,7 +128,7 @@
                         <select name="state">
                             <option value="Не встановлено" selected>Не встановлено</option>
                             <option value="Зареєстровано">Зареєстровано</option>
-                            <option value="Не зареєстровано">Незареєстровано</option>
+                            <option value="Незареєстровано">Незареєстровано</option>
                         </select>
                     </div>
                 </div>

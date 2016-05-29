@@ -46,7 +46,7 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
     
     @Override
     public PublicAssociation getByFullName(String name){
-        return publicAssociationRepository.findByFullName(name);
+        return publicAssociationRepository.findOneByFullName(name);
     }
     
     @Override
