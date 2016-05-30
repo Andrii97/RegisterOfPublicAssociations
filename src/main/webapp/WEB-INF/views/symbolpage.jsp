@@ -1,13 +1,13 @@
 <%-- 
-    Document   : adminpage
-    Created on : 27.05.2016, 1:02:05
+    Document   : symbolpage
+    Created on : 30.05.2016, 1:02:01
     Author     : BOSS
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,12 +19,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     </head>
-    <body style="text-align:center">
-        <%@include file="headerForAdmin.jsp"%>
-        <br>
-        <br>
-        <br>
-        <h1 style="text-shadow: 1px 1px 1px #000;">Сторінка адміна реєстру ГО</h1>        
+    <body>
         
+        <%@include file="headerForAdmin.jsp"%>
+        
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <h1 style="text-shadow: 1px 1px 1px #000;">Додавання символ у ГО</h1>
+            </div>
+        </div>
     </body>
 </html>

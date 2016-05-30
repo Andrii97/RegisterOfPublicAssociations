@@ -17,11 +17,20 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import com.mycompany.model.entity.Kind;
 import com.mycompany.model.entity.PublicAssociation;
+import com.mycompany.model.entity.PublicAssociationHasPerson;
+import com.mycompany.model.entity.Person;
+import com.mycompany.model.entity.Post;
 import com.mycompany.model.entity.Statuse;
+import com.mycompany.model.entity.Nationality;
 import com.mycompany.model.repository.FormOfIncorporationRepository;
 import com.mycompany.model.repository.KindRepository;
 import com.mycompany.model.repository.StatuseRepository;
+import com.mycompany.model.repository.PostRepository;
+import com.mycompany.model.repository.NationalityRepository;
+import com.mycompany.model.repository.PersonRepository;
 import com.mycompany.model.service.impl.PublicAssociationServiceImp;
+import com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImp;
+import com.mycompany.model.service.impl.PersonServiceImp;
 import java.io.IOException;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +53,16 @@ public class MainController{
     StatuseRepository statuseRepository;
     @Autowired
     public PublicAssociationServiceImp publicAssociationServiceImp;
+    @Autowired
+    NationalityRepository nationalityRepository;
+    @Autowired
+    PostRepository postRepository;
+    @Autowired
+    PersonRepository personRepository;
+    @Autowired
+    PersonServiceImp personServiceImp;
+    @Autowired
+    public PublicAssociationHasPersonServiceImp publicAssociationHasPersonServiceImp;
 
     
     @RequestMapping(value = {"", "mainpage"}, method = RequestMethod.GET)
@@ -58,6 +77,53 @@ public class MainController{
         map.put("thirdLevelOfLocations", null);
         
         return "mainpage";
+    }
+    
+    @RequestMapping(value = "admin/addperson", method = RequestMethod.POST)
+    public String addperson(@RequestParam(value = "name")String name,                             
+                                 ModelMap map){
+        if(name != null){
+        Nationality nationality = nationalityRepository.findByName("українське");
+        Person person = new Person();
+        person.setName(name);
+        person.setNationality(nationality);
+            personServiceImp.addPerson(person);
+        }
+        else{            
+        map.put("createResult", "Незаповнені обов'язкові поля");
+        }        
+        return "peoplepage";
+    }
+    
+    @RequestMapping(value = {"admin/addpeople"}, method = RequestMethod.GET)
+    public String peoplepage(ModelAndView mav, ModelMap map){
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("posts", postRepository.findAll());        
+        map.put("persons", personRepository.findAll());
+        return "peoplepage";
+    }
+    
+    @RequestMapping(value = "admin/addsymbolic", method = RequestMethod.GET)
+    public String symbolicpage(ModelAndView mav){
+        return "symbolpage";
+    }
+    
+    @RequestMapping(value = "admin/addpersonandpost", method = RequestMethod.POST)
+    public String addpersonandpost(@RequestParam(value = "PublicAssociation")String fullname,   
+                                    @RequestParam(value = "Person")String name,
+                                    @RequestParam(value = "Post")String postname,
+                                 ModelMap map){     
+        if(!fullname.equals("Оберіть ГО") || !name.equals("Оберіть особу") || !postname.equals("Оберіть посаду")){
+            Person person = personRepository.findByName(name);
+            PublicAssociation publicassociation = publicAssociationRepository.findOneByFullName(fullname);
+            Post post = postRepository.findByName(postname);
+            PublicAssociationHasPerson publicAssociationHasPerson = new PublicAssociationHasPerson(publicassociation, person,post);
+            publicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(publicAssociationHasPerson);
+        }
+        else{            
+            map.put("createResult", "Незаповнені обов'язкові поля");
+        }     
+        return "peoplepage";
     }
     
     @RequestMapping(value = "createpage", method = RequestMethod.POST)
