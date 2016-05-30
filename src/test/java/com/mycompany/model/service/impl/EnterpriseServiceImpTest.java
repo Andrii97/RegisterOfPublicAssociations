@@ -57,7 +57,7 @@ public class EnterpriseServiceImpTest {
     @Test
     public void testAddEnterprise() {
         System.out.println("addEnterprise");
-        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація");
+        PublicAssociation publicAssociation = publicAssociationRepository.findOneByFullName("Організація");
         Enterprise enterprise = new Enterprise(3245143, publicAssociation, "Нове Підприємство 2");
 
         Enterprise expResult = enterprise;

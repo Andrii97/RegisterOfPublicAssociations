@@ -80,7 +80,7 @@ public class PublicAssociationHasPersonServiceImpTest {
         System.out.println("addPublicAssociationHasPerson");
         Person person = personRepository.findByName("Сергієнко Ярослав Степанович");
         Post post = postRepository.findByName("Голова Ради");
-        PublicAssociation publicAssociation = publicAssociationRepository.findByFullName("Організація");
+        PublicAssociation publicAssociation = publicAssociationRepository.findOneByFullName("Організація");
         PublicAssociationHasPersonId publicAssociationPersonId = new PublicAssociationHasPersonId(publicAssociation.getId(), person.getId());
         PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociationPersonId, person, post, publicAssociation);
         PublicAssociationHasPerson expResult = publicAssociationPerson;

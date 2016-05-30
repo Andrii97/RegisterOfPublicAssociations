@@ -24,6 +24,8 @@
         <c:url value="/admin/addpeople" var="addPeople"/>    
         <c:url value="/admin/addnewperson" var="addNewPerson"/>   
         <c:url value="/admin/addsymbolic" var="addSymbolic"/>    
+        <c:url value="/admin/createpage" var="createPage"/>      
+        <c:url value="/admin/findpage" var="editPage"/>  
         
         <nav class="navbar navbar-default" style="background: linear-gradient(180deg, #193d5b,#fcf8e3);">
              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,6 +33,8 @@
                 <li><a href="${showMainpage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Назад у меню<span class="sr-only">(current)</span></a></li>        
               </ul>
               <ul class="nav navbar-nav navbar-right">
+                      <li><a href="${createPage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Створити Організацію</a></li>
+                      <li><a href="${editPage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Редагувати Організацію</a></li>
                   <li class="dropdown" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;" role="button" aria-haspopup="true" aria-expanded="false">Додавання<span class="caret"></span></a>
                     <ul class="dropdown-menu" style="background: linear-gradient(180deg, #193d5b,#fcf8e3);">
