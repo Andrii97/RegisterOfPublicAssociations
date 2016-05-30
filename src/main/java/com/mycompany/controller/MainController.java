@@ -144,7 +144,7 @@ public class MainController{
         return "peoplepage";
     }
     
-    @RequestMapping(value = "createpage", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/createpage", method = RequestMethod.POST)
     public String addrecord(@RequestParam(value = "fullname")String fullname,
                                  @RequestParam(value = "shortname")String shortname,
                                  @RequestParam(value = "foreignname")String foreignname,
@@ -228,7 +228,7 @@ public class MainController{
         return "loginpage";
     }
     
-    @RequestMapping(value = "createpage", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/createpage", method = RequestMethod.GET)
     public String createpage(ModelAndView mav, ModelMap map){
         map.put("kinds", kindRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
@@ -244,7 +244,7 @@ public class MainController{
         
     }
     
-    @RequestMapping(value = "/editpage", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/editpage", method = RequestMethod.POST)
     public String editpage(      @RequestParam(value = "realname")String realname,
                                  @RequestParam(value = "fullname")String fullname,
                                  @RequestParam(value = "shortname")String shortname,
@@ -332,12 +332,12 @@ public class MainController{
         return "findpage";
     }
     
-    @RequestMapping(value = "findpage", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/findpage", method = RequestMethod.GET)
     public String findpage(ModelMap map){
         return "findpage";
     }
     
-    @RequestMapping(value = "findname", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/findname", method = RequestMethod.POST)
     public String findname(@RequestParam(value = "editname")String editname, ModelMap map){ 
         map.put("kinds", kindRepository.findAll());
         map.put("name", "Andrii");
