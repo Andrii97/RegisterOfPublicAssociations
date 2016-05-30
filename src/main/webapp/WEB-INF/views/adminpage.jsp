@@ -19,42 +19,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     </head>
-    <body>
+    <body style="text-align:center">
+        <%@include file="headerForAdmin.jsp"%>
+        <br>
+        <br>
+        <br>
+        <h1 style="text-shadow: 1px 1px 1px #000;">Сторінка адміна реєстру ГО</h1>        
         
-        
-        <c:url value="/mainpage" var="showMainpage"/>     
-        
-        <nav class="navbar navbar-default">
-             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="${showMainpage}">Назад у меню<span class="sr-only">(current)</span></a></li>        
-              </ul>
-            </div>
-          </div>
-        </nav>
-              
-                        
-        <div class="row">
-           <div class="col-md-3"></div>
-           <div class="col-md-6" style="text-align: center">
-               <h1>Пошук громадської організації</h1>
-               <input type="text" name="search" id="search" class="form-control" placeholder="Введіть назву..." required autofocus>
-               </div>
-           <div class="col-md-3"></div>                
-       </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <form class="form-horizontal" style="text-align: center">
-                        <h2>Посада участників</h2>
-                        <input type="text" class="form-control" placeholder="Ім'я" required autofocus>
-                        <input type="text" class="form-control" placeholder="Посада" required autofocus>
-                        <button type="button" class="btn btn-default">Зберегти</button>
-                    </form>
-                </div>
-                <div class="col-md-3"></div>                
-            </div>
-        </div>
     </body>
 </html>
