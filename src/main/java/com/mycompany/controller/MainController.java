@@ -80,19 +80,29 @@ public class MainController{
     }
     
     @RequestMapping(value = "admin/addperson", method = RequestMethod.POST)
-    public String addperson(@RequestParam(value = "name")String name,                             
+    public String addperson(@RequestParam(value = "name")String name,
+                            @RequestParam(value = "series")String series,
+                            @RequestParam(value = "number")String number,
+                            @RequestParam(value = "HB")String HB,
+                            @RequestParam(value = "nationality")String nationality,
                                  ModelMap map){
-        if(name != null){
-        Nationality nationality = nationalityRepository.findByName("українське");
-        Person person = new Person();
-        person.setName(name);
-        person.setNationality(nationality);
+        map.put("nationalities", nationalityRepository.findAll());
+        if(name != null && !nationality.equals("Оберіть національність")){
+            Nationality nationality1 = nationalityRepository.findByName(nationality);
+            
+            Person person = new Person();
+            person.setName(name);
+            person.setNationality(nationality1);
+            person.setDateOfBirth(HB);
+            person.setNumber(number);
+            person.setSeries(series);
             personServiceImp.addPerson(person);
+            map.put("createResult", "Особа успішно додана");
         }
         else{            
-        map.put("createResult", "Незаповнені обов'язкові поля");
+            map.put("createResult", "Незаповнені обов'язкові поля");
         }        
-        return "peoplepage";
+        return "addnewpersonpage";
     }
     
     @RequestMapping(value = {"admin/addpeople"}, method = RequestMethod.GET)
@@ -108,6 +118,13 @@ public class MainController{
         return "symbolpage";
     }
     
+    @RequestMapping(value = "admin/addnewperson", method = RequestMethod.GET)
+    public String addnewpersonpage(ModelAndView mav, ModelMap map){
+        map.put("nationalities", nationalityRepository.findAll());
+        return "addnewpersonpage";
+    }
+    
+    
     @RequestMapping(value = "admin/addpersonandpost", method = RequestMethod.POST)
     public String addpersonandpost(@RequestParam(value = "PublicAssociation")String fullname,   
                                     @RequestParam(value = "Person")String name,
@@ -119,6 +136,7 @@ public class MainController{
             Post post = postRepository.findByName(postname);
             PublicAssociationHasPerson publicAssociationHasPerson = new PublicAssociationHasPerson(publicassociation, person,post);
             publicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(publicAssociationHasPerson);
+            map.put("createResult", "Особа успішно додана в ГО");
         }
         else{            
             map.put("createResult", "Незаповнені обов'язкові поля");
@@ -173,6 +191,7 @@ public class MainController{
             publicAssociation.setStatuses(statuses);
             }
             publicAssociationServiceImp.addPublicAssociation(publicAssociation);
+            map.put("createResult", "ГО успішно додана");
 
         }
         else{            
