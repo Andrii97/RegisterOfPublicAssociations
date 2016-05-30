@@ -25,27 +25,11 @@
                
         <div class="container">
             <div class="row" style="text-align: center;">
-                <h1 style="text-shadow: 1px 1px 1px #000;">Додавання людей та посад у ГО</h1>
+                <h1 style="text-shadow: 1px 1px 1px #000;">Додавання людей з посадами у ГО</h1>
             </div>
         </div>       
         <br>
-        <div class="container">
-            <div class="row">
-                <form method="post" action="addperson">      
-                <div class="col-md-4"></div>
-                <div class="col-md-4" style="text-align: center;">
-                    
-                        <label for="inputName" class="sr-only">Ім'я участника</label>
-                        <input type="text" name = "name" id="inputName" class="form-control" placeholder="Введіть ім'я участника..." c>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-primary" type="submit" value="disable" style="position:relative;float:right;">Створити</button>                 
-                </div>
-                </form>
-            </div>
-            <br>
-            <br>
-            <br>
+        <div class="container">           
             <form method="post" action="addpersonandpost">
                 <% String errorMessage = (String)request.getAttribute("createResult"); %>
                 <%
