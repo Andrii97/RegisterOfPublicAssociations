@@ -53,6 +53,18 @@
                 </div>
                 </div>
                 <% } %>
+                <% String successMessage = (String)request.getAttribute("successResult"); %>
+                <%
+                    if(successMessage != null)
+                {%>
+                <div class="row">                    
+                <div class="alert alert-success alert-dismissible" role="alert" style="height:50%;">
+                    <h4 class="alert-link">
+                        <%=successMessage%>
+                    </h4>
+                </div>
+                </div>
+                <% } %>
                 
                 <div class="container">  
                 <div class="form-group" class="row" style="width: 100%">    
