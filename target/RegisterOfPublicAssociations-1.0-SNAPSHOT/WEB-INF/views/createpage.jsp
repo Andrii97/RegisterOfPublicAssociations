@@ -45,13 +45,24 @@
                 {%>
                 <div class="row">                    
                 <div class="alert alert-warning alert-dismissible" role="alert" style="height:50%;">
-                    <h4 class="alert-link">
+                    <h4 class="alert-link" style="text-align: center">
                         <%=errorMessage%>
                     </h4>
                 </div>
                 </div>
                 <% } %>
-                
+                <% String successMessage = (String)request.getAttribute("successResult"); %>
+                <%
+                    if(successMessage != null)
+                {%>
+                <div class="row">                    
+                <div class="alert alert-success alert-dismissible" role="alert" style="height:50%;">
+                    <h4 class="alert-link" style="text-align: center">
+                        <%=successMessage%>
+                    </h4>
+                </div>
+                </div>
+                <% } %>
                 <div class="container">
                 <div class="form-group row">
                     <p style="position:relative;float:left;font-weight:bold;"><span style="color:red;">*</span> - обов'язкові поля</p>

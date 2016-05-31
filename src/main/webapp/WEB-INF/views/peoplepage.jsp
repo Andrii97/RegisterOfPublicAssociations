@@ -30,7 +30,7 @@
         </div>       
         <br>
         <div class="container">           
-            <form method="post" action="addpersonandpost">
+            <form method="post" action="addpeople">
                 <% String errorMessage = (String)request.getAttribute("createResult"); %>
                 <%
                     if(errorMessage != null)
@@ -39,6 +39,18 @@
                 <div class="alert alert-warning alert-dismissible" role="alert" style="height:50%;">
                     <h4 class="alert-link">
                         <%=errorMessage%>
+                    </h4>
+                </div>
+                </div>
+                <% } %>
+                <% String successMessage = (String)request.getAttribute("successResult"); %>
+                <%
+                    if(successMessage != null)
+                {%>
+                <div class="row">                    
+                <div class="alert alert-success alert-dismissible" role="alert" style="height:50%;">
+                    <h4 class="alert-link" style="text-align: center">
+                        <%=successMessage%>
                     </h4>
                 </div>
                 </div>

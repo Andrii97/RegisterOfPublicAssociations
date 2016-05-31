@@ -97,7 +97,7 @@ public class MainController{
             person.setNumber(number);
             person.setSeries(series);
             personServiceImp.addPerson(person);
-            map.put("createResult", "Особа успішно додана");
+            map.put("successResult", "Особа успішно додана в базу");
         }
         else{            
             map.put("createResult", "Незаповнені обов'язкові поля");
@@ -113,11 +113,6 @@ public class MainController{
         return "peoplepage";
     }
     
-    @RequestMapping(value = "admin/addsymbolic", method = RequestMethod.GET)
-    public String symbolicpage(ModelAndView mav){
-        return "symbolpage";
-    }
-    
     @RequestMapping(value = "admin/addnewperson", method = RequestMethod.GET)
     public String addnewpersonpage(ModelAndView mav, ModelMap map){
         map.put("nationalities", nationalityRepository.findAll());
@@ -125,18 +120,21 @@ public class MainController{
     }
     
     
-    @RequestMapping(value = "admin/addpersonandpost", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/addpeople", method = RequestMethod.POST)
     public String addpersonandpost(@RequestParam(value = "PublicAssociation")String fullname,   
                                     @RequestParam(value = "Person")String name,
                                     @RequestParam(value = "Post")String postname,
                                  ModelMap map){     
+        map.put("publicAssociations", publicAssociationRepository.findAll());
+        map.put("posts", postRepository.findAll());        
+        map.put("persons", personRepository.findAll());
         if(!fullname.equals("Оберіть ГО") || !name.equals("Оберіть особу") || !postname.equals("Оберіть посаду")){
             Person person = personRepository.findByName(name);
             PublicAssociation publicassociation = publicAssociationRepository.findOneByFullName(fullname);
             Post post = postRepository.findByName(postname);
             PublicAssociationHasPerson publicAssociationHasPerson = new PublicAssociationHasPerson(publicassociation, person,post);
             publicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(publicAssociationHasPerson);
-            map.put("createResult", "Особа успішно додана в ГО");
+            map.put("successResult", "Особа успішно додана в ГО");
         }
         else{            
             map.put("createResult", "Незаповнені обов'язкові поля");
@@ -191,7 +189,7 @@ public class MainController{
             publicAssociation.setStatuses(statuses);
             }
             publicAssociationServiceImp.addPublicAssociation(publicAssociation);
-            map.put("createResult", "ГО успішно додана");
+            map.put("successResult", "ГО успішно додана");
 
         }
         else{            
