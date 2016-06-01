@@ -126,7 +126,7 @@ public class PublicAssociation  implements java.io.Serializable {
         this.certificate = certificate;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="form_of_incorporation_id", nullable=false)
     public FormOfIncorporation getFormOfIncorporation() {
         return this.formOfIncorporation;
@@ -315,7 +315,7 @@ public class PublicAssociation  implements java.io.Serializable {
         this.enterprises = enterprises;
     }
 
-@ManyToMany(fetch=FetchType.LAZY)
+@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="public_association_has_kind", catalog="register_of_public_association", joinColumns = { 
         @JoinColumn(name="public_association_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="kind_id", nullable=false, updatable=false) })

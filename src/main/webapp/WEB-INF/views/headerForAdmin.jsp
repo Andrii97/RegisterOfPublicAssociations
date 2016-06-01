@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     </head>
     <body>         
-        
+        <c:url value="/logout" var="logout"/>   
         <c:url value="/mainpage" var="showMainpage"/>   
         <c:url value="/admin/addpeople" var="addPeople"/>    
         <c:url value="/admin/addnewperson" var="addNewPerson"/>   
@@ -29,7 +30,8 @@
         <nav class="navbar navbar-default" style="background: linear-gradient(180deg, #193d5b,#fcf8e3);">
              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="${showMainpage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Назад у меню<span class="sr-only">(current)</span></a></li>        
+                <li><a href="${showMainpage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Назад у меню<span class="sr-only">(current)</span></a></li>   
+                <li><a href="${logout}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Вийти з системи<span class="sr-only">(current)</span></a></li>        
               </ul>
               <ul class="nav navbar-nav navbar-right">
                       <li><a href="${createPage}" style="color: #fcf8e3;text-shadow: 1px 1px 1px #000;">Створити ГО</a></li>

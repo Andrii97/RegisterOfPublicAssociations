@@ -1,60 +1,60 @@
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\StatuseRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\AdminRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\TerminationOfActivity.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\AdminServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Cause.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PublicAssociationService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\SymbolicRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FourthLevelOfLocationId.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Statuse.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PublicAssociationHasPersonRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Person.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\SymbolicService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PublicAssociationHasPersonServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\SecondLevelOfLocationId.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\AllRecordsRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\AdminService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\AllRecordsService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociationHasPersonId.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\EnterpriseRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Certificate.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\TerminationOfActivityServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FormOfIncorporation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociationHasPerson.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PublicAssociationServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\TypeOfSymbolicRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\SymbolicServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Post.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\AllRecords.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\EnterpriseService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Nationality.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\controller\AdminController.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FourthLevelOfLocation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\TerminationOfActivityService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PersonServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Enterprise.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\TerminationOfActivityRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\SecondLevelOfLocation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\ThirdLevelOfLocationId.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\NationalityRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Admin.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\FormOfIncorporationServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Kind.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\springtest\Start.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Symbolic.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\controller\MainController.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\TypeOfSymbolic.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\AllRecordsServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PersonService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PostRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PublicAssociationRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\EnterpriseServiceImp.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\FormOfIncorporationService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\KindRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FirstLevelOfLocation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\CauseRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\FormOfIncorporationRepository.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\ThirdLevelOfLocation.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PublicAssociationHasPersonService.java
-D:\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PersonRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\AllRecordsRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PublicAssociationRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\TerminationOfActivityRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\NationalityRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Admin.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\EnterpriseServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\springtest\Start.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\SymbolicRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\TypeOfSymbolicRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\TerminationOfActivityService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\FormOfIncorporationRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Person.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FourthLevelOfLocationId.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\AdminServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Cause.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\KindRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FormOfIncorporation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\SecondLevelOfLocationId.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\AdminService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PersonServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Nationality.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\controller\AdminController.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Certificate.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Statuse.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\ThirdLevelOfLocation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PersonService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\EnterpriseRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Enterprise.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociationHasPerson.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\FormOfIncorporationServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociationHasPersonId.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PublicAssociationHasPersonRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\SymbolicService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\AllRecordsServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Symbolic.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\AllRecords.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\SecondLevelOfLocation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PublicAssociationServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Kind.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\StatuseRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\AllRecordsService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PublicAssociationHasPersonService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\TerminationOfActivity.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PostRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PublicAssociationService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\FormOfIncorporationService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PersonRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FourthLevelOfLocation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\PublicAssociationHasPersonServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\controller\MainController.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\TypeOfSymbolic.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\TerminationOfActivityServiceImp.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\EnterpriseService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\ThirdLevelOfLocationId.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\CauseRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\PublicAssociation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\AdminRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\Post.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FirstLevelOfLocation.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\SymbolicServiceImp.java

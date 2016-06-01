@@ -81,8 +81,7 @@ public class PublicAssociationHasPersonServiceImpTest {
         Person person = personRepository.findByName("Сергієнко Ярослав Степанович");
         Post post = postRepository.findByName("Голова Ради");
         PublicAssociation publicAssociation = publicAssociationRepository.findOneByFullName("Організація");
-        PublicAssociationHasPersonId publicAssociationPersonId = new PublicAssociationHasPersonId(publicAssociation.getId(), person.getId());
-        PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociationPersonId, person, post, publicAssociation);
+        PublicAssociationHasPerson publicAssociationPerson = new PublicAssociationHasPerson(publicAssociation, person, post);
         PublicAssociationHasPerson expResult = publicAssociationPerson;
         PublicAssociationHasPerson result = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result);
@@ -100,7 +99,7 @@ public class PublicAssociationHasPersonServiceImpTest {
         assertEquals(result, expResult);
         System.out.println("addPost");
         Post post = new Post("Секретар");
-        postRepository.saveAndFlush(post);
+        Post post_res = postRepository.saveAndFlush(post);
         
         System.out.println("addPublicAssociation");
         PublicAssociation publicAssociation = new PublicAssociation(formOfIncorporationServiceImp.getByName("Громадська спілка"), 
@@ -114,7 +113,9 @@ public class PublicAssociationHasPersonServiceImpTest {
         PublicAssociationHasPerson result2 = instance.addPublicAssociationHasPerson(publicAssociationPerson);
         assertNotNull(result2);
         instance.deletePublicAssociationHasPerson(publicAssociationPerson);
-        
+        postRepository.delete(post_res);
+        personServiceImp.deletePerson(result);
+        publicAssociationServiceImp.deletePublicAssociation(result1);
     }
 
     /**

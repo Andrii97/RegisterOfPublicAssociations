@@ -7,8 +7,8 @@
     <http>
         <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
-        <!--intercept-url pattern="/admin/dev**" access="hasRole('DEV')"/>
-        <intercept-url pattern="/admin/dev/**" access="hasRole('DEV')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <!--intercept-url pattern="/admin/dev/**" access="hasRole('DEV')"/>
         <intercept-url pattern="/admin/coord**" access="hasRole('COORD')"/>
         <intercept-url pattern="/admin/just**" access="hasRole('JUST')"/-->
 

@@ -22,17 +22,24 @@ import com.mycompany.model.entity.Person;
 import com.mycompany.model.entity.Post;
 import com.mycompany.model.entity.Statuse;
 import com.mycompany.model.entity.Nationality;
+import com.mycompany.model.repository.FirstLevelOfLocationRepository;
 import com.mycompany.model.repository.FormOfIncorporationRepository;
 import com.mycompany.model.repository.KindRepository;
 import com.mycompany.model.repository.StatuseRepository;
 import com.mycompany.model.repository.PostRepository;
 import com.mycompany.model.repository.NationalityRepository;
 import com.mycompany.model.repository.PersonRepository;
+import com.mycompany.model.repository.SecondLevelOfLocationRepository;
 import com.mycompany.model.service.impl.PublicAssociationServiceImp;
 import com.mycompany.model.service.impl.PublicAssociationHasPersonServiceImp;
 import com.mycompany.model.service.impl.PersonServiceImp;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +59,7 @@ public class MainController{
     @Autowired
     StatuseRepository statuseRepository;
     @Autowired
-    public PublicAssociationServiceImp publicAssociationServiceImp;
+    PublicAssociationServiceImp publicAssociationServiceImp;
     @Autowired
     NationalityRepository nationalityRepository;
     @Autowired
@@ -62,17 +69,19 @@ public class MainController{
     @Autowired
     PersonServiceImp personServiceImp;
     @Autowired
-    public PublicAssociationHasPersonServiceImp publicAssociationHasPersonServiceImp;
-
+    PublicAssociationHasPersonServiceImp publicAssociationHasPersonServiceImp;
+    @Autowired
+    FirstLevelOfLocationRepository firstLevelOfLocationRepository;
+    @Autowired
+    SecondLevelOfLocationRepository secondLevelOfLocationRepository;
     
     @RequestMapping(value = {"", "mainpage"}, method = RequestMethod.GET)
     public String mainpage(ModelAndView mav, ModelMap map){
         map.put("kinds", kindRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("firstLevelOfLocations", null);
+        map.put("firstLevelOfLocations", firstLevelOfLocationRepository.findAll());
         map.put("secondLevelOfLocations", null);
         map.put("thirdLevelOfLocations", null);
         
@@ -158,13 +167,9 @@ public class MainController{
                                  @RequestParam(value = "fourthlevel")Integer fourthlevel,
                                  ModelMap map){
         map.put("kinds", kindRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("firstLevelOfLocations", null);
-        map.put("secondLevelOfLocations", null);
-        map.put("thirdLevelOfLocations", null);
         
         if (!fullname.equals("") && !formOfIncorporation.equals("Не встановлено") && !state.equals("Не встановлено")
                 && firstlevel != null && secondlevel != null && thirdlevel != null && fourthlevel != null)
@@ -197,26 +202,64 @@ public class MainController{
         }
         return "createpage";
     }
-    /*
-    @RequestMapping(value = "mainpage", params = "again", method = RequestMethod.GET)
-    public String showmainpage(ModelAndView mav){
-        return "mainpage";
-    }*/
     
     @RequestMapping(value = "mainpage", method = RequestMethod.POST)
     public String searchPublicAssociations(@RequestParam(value = "FullName")String fullname,
                                  @RequestParam(value = "Status")String status,
                                  @RequestParam(value = "FormOfIncorporation")String formOfIncorporation,
+                                 @RequestParam(value = "Kind")String kind,
+                                 @RequestParam(value = "DateOfRegistration")String dat,
                                  ModelMap map){
+        Date date;
+        /*try(FileWriter writer = new FileWriter("D://test1.txt", false)){
+            writer.append(dat);
+            writer.flush();
+        }
+        catch(IOException e){
+
+        }*/
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(dat);
+        } catch (ParseException ex) {
+            date = null;
+        }
         map.put("kinds", kindRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("publicAssociations", publicAssociationRepository.findByFullName(fullname));
-        map.put("firstLevelOfLocations", null);//firstLevelOfLocationRepository.findAll());
+        String pa = "%" + fullname + "%";
+        List<PublicAssociation> publicAssociations = publicAssociationRepository.findByFullNameLike(pa);
+        if(formOfIncorporation.equals("не встановлено") && date == null)
+        {
+            publicAssociations = publicAssociationRepository.findByFullNameLike(pa);
+        }
+        else if(date == null)
+        {
+            FormOfIncorporation form_of_incorporation = formOfIncorporationRepository.findByName(formOfIncorporation);
+            publicAssociations = publicAssociationRepository.findByFullNameLikeAndFormOfIncorporation(pa, form_of_incorporation);
+        }
+        else if(formOfIncorporation.equals("не встановлено"))
+        {
+            Date dateAfter = date;
+            Date dateBefore = (Date)date.clone();
+            dateBefore.setDate(dateBefore.getDate() + 1);
+            publicAssociations = publicAssociationRepository.findByFullNameLikeAndDateOfRegistrationAfterAndDateOfRegistrationBefore
+                (pa, date, dateBefore);
+        }
+        else
+        {
+            FormOfIncorporation form_of_incorporation = formOfIncorporationRepository.findByName(formOfIncorporation);
+            Date dateAfter = date;
+            Date dateBefore = (Date)date.clone();
+            dateBefore.setDate(dateBefore.getDate() + 1);
+            publicAssociationRepository.findByFullNameLikeAndFormOfIncorporationAndDateOfRegistrationAfterAndDateOfRegistrationBefore
+        (pa, form_of_incorporation, dateAfter, dateBefore);
+        }
+        /*if(!kind.equals("не встановлено") || !status.equals("не встановлено"))
+            publicAssociations = filterPublicAssociations(publicAssociations, kind, status);*/
+        map.put("publicAssociations", publicAssociations);
+        map.put("firstLevelOfLocations", firstLevelOfLocationRepository.findAll());
         map.put("secondLevelOfLocations", null);
         map.put("thirdLevelOfLocations", null);
-        map.put("fourthLevelOfLocations", null);
         
         return "mainpage";
     }
@@ -230,14 +273,9 @@ public class MainController{
     public String createpage(ModelAndView mav, ModelMap map){
         map.put("kinds", kindRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("firstLevelOfLocations", null);
-        map.put("secondLevelOfLocations", null);
-        map.put("thirdLevelOfLocations", null);
-        map.put("fourthLevelOfLocations", null);
         return "createpage";
         
     }
@@ -260,14 +298,9 @@ public class MainController{
                                  ModelMap map){
         
         map.put("kinds", kindRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("firstLevelOfLocations", null);
-        map.put("secondLevelOfLocations", null);
-        map.put("thirdLevelOfLocations", null);
-        map.put("fourthLevelOfLocations", null);
         
         PublicAssociation publicAssociation = publicAssociationRepository.findOneByFullName(realname);
         
@@ -338,14 +371,9 @@ public class MainController{
     @RequestMapping(value = "admin/findname", method = RequestMethod.POST)
     public String findname(@RequestParam(value = "editname")String editname, ModelMap map){ 
         map.put("kinds", kindRepository.findAll());
-        map.put("name", "Andrii");
         map.put("formOfIncorporations", formOfIncorporationRepository.findAll());
         map.put("publicAssociations", publicAssociationRepository.findAll());
         map.put("statuses", statuseRepository.findAll());
-        map.put("firstLevelOfLocations", null);
-        map.put("secondLevelOfLocations", null);
-        map.put("thirdLevelOfLocations", null);     
-        map.put("fourthLevelOfLocations", null);
         
         if(publicAssociationRepository.findOneByFullName(editname) != null){
             map.put("choosenassociation", publicAssociationRepository.findOneByFullName(editname));
@@ -371,5 +399,22 @@ public class MainController{
     public String admin(ModelAndView mav){
         return "adminpage";
     }    
+
+    private List<PublicAssociation> filterPublicAssociations(List<PublicAssociation> publicAssociations, Kind kind, String status) 
+    {
+        List<PublicAssociation> res_list = new ArrayList<>();
+        for(PublicAssociation p : publicAssociations)
+        {
+            if(kind != null)
+                if(status == null)
+                {
+                    if(p.getKinds().contains(kind))
+                        res_list.add(p);
+                }
+                else if(p.getKinds().contains(kind) && p..contains(kind))
+                    
+        }
+        return res_list;
+    }
     
 }

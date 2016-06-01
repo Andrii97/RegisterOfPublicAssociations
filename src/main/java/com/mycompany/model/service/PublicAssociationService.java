@@ -18,4 +18,5 @@ public interface PublicAssociationService {
     PublicAssociation getByFullName(String name);
     List<PublicAssociation> getAll();
     Set<PublicAssociation> getByKind(String name);
+    void deletePublicAssociation(PublicAssociation publicAssociation);
 }

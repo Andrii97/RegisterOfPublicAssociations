@@ -50,7 +50,7 @@
                         <div class="col-md-6" style="text-align: center">
                             <div class="form-group">
                                 <label>Дата реєстрації</label><br>
-                                <input type="date">
+                                <input type="date" name="DateOfRegistration">
                             </div>
                         </div>
                         <div class="col-md-6" style="text-align: center">
@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label>Рівень 1:</label>
                                 <select name="FirstLevelOfLocation">
-                                    <option value="FirstLevelOfLocation 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${firstLevelOfLocations}" var="firstLevelOfLocation">
                                         <option>${firstLevelOfLocation.name}</option>
                                     </c:forEach>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label>Рівень 2:</label>
                                 <select name="SecondLevelOfLocation">
-                                    <option value="SecondLevelOfLocation 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${secondLevelOfLocations}" var="secondLevelOfLocation">
                                         <option>${secondLevelOfLocation.name}</option>
                                     </c:forEach>
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label>Рівень 3:</label>
                                 <select name="ThirdLevelOfLocation">
-                                    <option value="ThirdLevelOfLocation 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${thirdLevelOfLocations}" var="thirdLevelOfLocation">
                                         <option>${thirdLevelOfLocation.name}</option>
                                     </c:forEach>
@@ -91,7 +91,7 @@
                                 <label>Статус:</label>
                                 <br>
                                 <select name="Status">
-                                    <option value="Status 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${statuses}" var="status">
                                         <option>${status.name}</option>
                                     </c:forEach>
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label>Спрямованість:</label>
                                 <select name="Kind" >
-                                    <option value="Kind 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${kinds}" var="kind">
                                         <option>${kind.name}</option>
                                     </c:forEach>
@@ -114,7 +114,7 @@
                                 <label>Вид:</label>
                                 <br>
                                 <select name="FormOfIncorporation">
-                                    <option value="FormOfIncorporation 0" selected>не встановлено</option>
+                                    <option value="не встановлено" selected>не встановлено</option>
                                     <c:forEach items="${formOfIncorporations}" var="formOfIncorporation">
                                         <option>${formOfIncorporation.name}</option>
                                     </c:forEach>

@@ -61,7 +61,7 @@
                             <div class="form-group" style="text-align: center;">
                                 <label>Громадські організації</label><br>
                                 <select name="PublicAssociation">
-                                    <option value="PublicAssociation 0" selected>Оберіть ГО</option>
+                                    <option value="Оберіть ГО" selected>Оберіть ГО</option>
                                     <c:forEach items="${publicAssociations}" var="publicAssociation">
                                         <option>${publicAssociation.fullName}</option>
                                     </c:forEach>
@@ -75,7 +75,7 @@
                         <div class="form-group" style="text-align: center;">
                             <label>Особи</label><br>
                             <select name="Person">
-                                <option value="Person 0" selected>Оберіть особу</option>
+                                <option value="Оберіть особу" selected>Оберіть особу</option>
                                 <c:forEach items="${persons}" var="person">
                                     <option>${person.name}</option>
                                 </c:forEach>
@@ -86,7 +86,7 @@
                             <div class="form-group" style="text-align: center;">
                                 <label>Посади</label><br>
                                 <select name="Post">
-                                    <option value="Post 0" selected>Оберіть посаду</option>
+                                    <option value="Оберіть посаду" selected>Оберіть посаду</option>
                                     <c:forEach items="${posts}" var="post">
                                         <option>${post.name}</option>
                                     </c:forEach>

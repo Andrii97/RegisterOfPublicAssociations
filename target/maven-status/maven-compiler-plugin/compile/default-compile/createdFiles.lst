@@ -3,7 +3,6 @@ com\mycompany\model\repository\StatuseRepository.class
 com\mycompany\model\entity\ThirdLevelOfLocationId.class
 com\mycompany\model\repository\NationalityRepository.class
 com\mycompany\model\service\impl\SymbolicServiceImp.class
-com\mycompany\controller\MainController.class
 com\mycompany\model\entity\Person.class
 com\mycompany\model\entity\FormOfIncorporation.class
 com\mycompany\model\entity\TerminationOfActivity.class
@@ -17,7 +16,6 @@ com\mycompany\model\service\PersonService.class
 com\mycompany\model\entity\Enterprise.class
 com\mycompany\model\entity\Post.class
 com\mycompany\model\repository\AdminRepository.class
-com\mycompany\controller\AdminController.class
 com\mycompany\model\entity\FourthLevelOfLocationId.class
 com\mycompany\model\service\PublicAssociationService.class
 com\mycompany\model\entity\Statuse.class

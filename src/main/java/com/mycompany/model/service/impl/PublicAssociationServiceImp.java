@@ -14,6 +14,7 @@ import java.util.Set;
 import com.mycompany.model.repository.PublicAssociationRepository;
 import com.mycompany.model.repository.KindRepository;
 import com.mycompany.model.service.PublicAssociationService;
+import java.util.Date;
 /**
  *
  * @author Andrii
@@ -33,16 +34,10 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
     
     @Override
     public PublicAssociation addPublicAssociation(PublicAssociation publicAssociation){
+        publicAssociation.setDateOfLastEvent(new Date());
         PublicAssociation savedPublicAssociation = publicAssociationRepository.saveAndFlush(publicAssociation);
         return savedPublicAssociation;
     }
-    
-    /*@Override
-    public PublicAssociation addPublicAssociationKind(Set<Kind> kinds, PublicAssociation publicAssociation){
-        publicAssociation.setKinds(kinds);
-        PublicAssociation savedPublicAssociation = publicAssociationRepository.saveAndFlush(publicAssociation);
-        return savedPublicAssociation;
-    }*/
     
     @Override
     public PublicAssociation getByFullName(String name){
@@ -55,4 +50,9 @@ public class PublicAssociationServiceImp implements PublicAssociationService {
         return savedKind.getPublicAssociations();
     }
     
+    @Override
+    public void deletePublicAssociation(PublicAssociation publicAssociation)
+    {
+        publicAssociationRepository.delete(publicAssociation);
+    }
 }

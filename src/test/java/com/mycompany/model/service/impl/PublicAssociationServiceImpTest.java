@@ -82,6 +82,7 @@ public class PublicAssociationServiceImpTest {
         PublicAssociation expResult = publicAssociation;
         PublicAssociation result = instance.addPublicAssociation(publicAssociation);
         assertEquals(expResult, result);
+        instance.deletePublicAssociation(result);
     }
 
     /**

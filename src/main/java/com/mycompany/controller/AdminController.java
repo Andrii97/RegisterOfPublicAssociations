@@ -16,7 +16,7 @@ import com.mycompany.model.service.AdminService;
 /**
  *
  * @author Andrii
- */
+ *//*
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -37,7 +37,7 @@ public class AdminController {
                 return "coordprivatepage";
             case JUCTICE_WORKER:
                 return "justiceprivatepage";
-        }*/
+        }
         return null;
     }
-}
+}*/
