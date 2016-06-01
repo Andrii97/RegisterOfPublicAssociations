@@ -4,6 +4,7 @@ com\mycompany\model\service\impl\TerminationOfActivityServiceImpTest.class
 com\mycompany\model\service\impl\AdminServiceImpTest.class
 com\mycompany\model\service\impl\EnterpriseServiceImpTest.class
 com\mycompany\model\service\impl\SymbolicServiceImpTest.class
+com\mycompany\model\service\impl\SearchTest.class
 com\mycompany\model\service\impl\PublicAssociationHasPersonServiceImpTest.class
 com\mycompany\model\service\impl\AllRecordsServiceImpTest.class
 com\mycompany\model\service\impl\FormOfIncorporationServiceImpTest.class

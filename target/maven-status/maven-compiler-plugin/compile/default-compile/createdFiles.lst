@@ -3,6 +3,7 @@ com\mycompany\model\repository\StatuseRepository.class
 com\mycompany\model\entity\ThirdLevelOfLocationId.class
 com\mycompany\model\repository\NationalityRepository.class
 com\mycompany\model\service\impl\SymbolicServiceImp.class
+com\mycompany\controller\MainController.class
 com\mycompany\model\entity\Person.class
 com\mycompany\model\entity\FormOfIncorporation.class
 com\mycompany\model\entity\TerminationOfActivity.class
@@ -31,6 +32,7 @@ com\mycompany\model\repository\TypeOfSymbolicRepository.class
 com\mycompany\model\service\impl\EnterpriseServiceImp.class
 com\mycompany\model\entity\PublicAssociation.class
 com\mycompany\model\entity\TypeOfSymbolic.class
+com\mycompany\model\repository\FirstLevelOfLocationRepository.class
 com\mycompany\model\service\impl\FormOfIncorporationServiceImp.class
 com\mycompany\model\entity\Nationality.class
 com\mycompany\model\entity\Certificate.class
@@ -46,6 +48,7 @@ com\mycompany\model\repository\FormOfIncorporationRepository.class
 com\mycompany\model\service\impl\PersonServiceImp.class
 com\mycompany\model\entity\Cause.class
 com\mycompany\model\repository\PublicAssociationHasPersonRepository.class
+com\mycompany\model\repository\SecondLevelOfLocationRepository.class
 com\mycompany\model\service\AllRecordsService.class
 com\mycompany\model\repository\SymbolicRepository.class
 com\mycompany\model\service\SymbolicService.class

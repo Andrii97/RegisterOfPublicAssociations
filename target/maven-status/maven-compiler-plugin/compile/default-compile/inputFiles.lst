@@ -6,6 +6,7 @@ D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\c
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\impl\EnterpriseServiceImp.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\springtest\Start.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\SymbolicRepository.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\SecondLevelOfLocationRepository.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\TypeOfSymbolicRepository.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\TerminationOfActivityService.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\FormOfIncorporationRepository.java
@@ -43,6 +44,7 @@ D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\c
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\TerminationOfActivity.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PostRepository.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\PublicAssociationService.java
+D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\FirstLevelOfLocationRepository.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\service\FormOfIncorporationService.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\repository\PersonRepository.java
 D:\університет\2 курс\2 семестр\КПЗ\RegisterOfPublicAssociations\src\main\java\com\mycompany\model\entity\FourthLevelOfLocation.java

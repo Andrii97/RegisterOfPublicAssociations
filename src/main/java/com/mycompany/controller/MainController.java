@@ -5,6 +5,7 @@
  */
 package com.mycompany.controller;
 
+import com.mycompany.model.entity.FirstLevelOfLocation;
 import java.util.List;
 import com.mycompany.model.entity.FormOfIncorporation;
 import com.mycompany.model.repository.PublicAssociationRepository;
@@ -138,12 +139,19 @@ public class MainController{
         map.put("posts", postRepository.findAll());        
         map.put("persons", personRepository.findAll());
         if(!fullname.equals("Оберіть ГО") || !name.equals("Оберіть особу") || !postname.equals("Оберіть посаду")){
-            Person person = personRepository.findByName(name);
-            PublicAssociation publicassociation = publicAssociationRepository.findOneByFullName(fullname);
-            Post post = postRepository.findByName(postname);
-            PublicAssociationHasPerson publicAssociationHasPerson = new PublicAssociationHasPerson(publicassociation, person,post);
-            publicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(publicAssociationHasPerson);
-            map.put("successResult", "Особа успішно додана в ГО");
+            try
+            {
+                Person person = personRepository.findOneByName(name);
+                PublicAssociation publicassociation = publicAssociationRepository.findOneByFullName(fullname);
+                Post post = postRepository.findByName(postname);
+                PublicAssociationHasPerson publicAssociationHasPerson = new PublicAssociationHasPerson(publicassociation, person,post);
+                publicAssociationHasPersonServiceImp.addPublicAssociationHasPerson(publicAssociationHasPerson);
+                map.put("successResult", "Особа успішно додана в ГО");
+            }
+            catch(Exception e)
+            {
+                map.put("createResult", "Особа вже додана до ГО");
+            }
         }
         else{            
             map.put("createResult", "Незаповнені обов'язкові поля");
@@ -209,15 +217,9 @@ public class MainController{
                                  @RequestParam(value = "FormOfIncorporation")String formOfIncorporation,
                                  @RequestParam(value = "Kind")String kind,
                                  @RequestParam(value = "DateOfRegistration")String dat,
+                                 @RequestParam(value = "FirstLevelOfLocation")String firstLevelOfLocation,
                                  ModelMap map){
         Date date;
-        /*try(FileWriter writer = new FileWriter("D://test1.txt", false)){
-            writer.append(dat);
-            writer.flush();
-        }
-        catch(IOException e){
-
-        }*/
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(dat);
         } catch (ParseException ex) {
@@ -254,8 +256,24 @@ public class MainController{
             publicAssociationRepository.findByFullNameLikeAndFormOfIncorporationAndDateOfRegistrationAfterAndDateOfRegistrationBefore
         (pa, form_of_incorporation, dateAfter, dateBefore);
         }
-        /*if(!kind.equals("не встановлено") || !status.equals("не встановлено"))
-            publicAssociations = filterPublicAssociations(publicAssociations, kind, status);*/
+        if(!kind.equals("не встановлено") || !status.equals("не встановлено"))
+        {
+            Kind kind_ = kindRepository.findByName(kind);
+            Statuse status_  = statuseRepository.findByName(status);
+            publicAssociations = filterPublicAssociations(publicAssociations, kind_, status_);
+        }
+        if(!firstLevelOfLocation.equals("не встановлено"))
+        {
+            FirstLevelOfLocation firstLevelOfLocation_ = firstLevelOfLocationRepository.findByName(firstLevelOfLocation);
+            List<PublicAssociation> publicAssociations_ = new ArrayList<>();
+            for(PublicAssociation p : publicAssociations)
+            {
+                if((char)p.getFirstLevelOfLocation() == (char)firstLevelOfLocation_.getCode())
+                    publicAssociations_.add(p);
+            }
+            publicAssociations = publicAssociations_;
+        }
+            
         map.put("publicAssociations", publicAssociations);
         map.put("firstLevelOfLocations", firstLevelOfLocationRepository.findAll());
         map.put("secondLevelOfLocations", null);
@@ -352,14 +370,6 @@ public class MainController{
         publicAssociationRepository.saveAndFlush(publicAssociation);
         
         map.put("choosenassociation", publicAssociation);
-        /*
-        try(FileWriter writer = new FileWriter("D://test1.txt", false)){
-            writer.append(publicAssociation.getShortName());
-            writer.flush();
-        }
-        catch(IOException e){
-
-        }*/
         return "findpage";
     }
     
@@ -400,21 +410,41 @@ public class MainController{
         return "adminpage";
     }    
 
-    private List<PublicAssociation> filterPublicAssociations(List<PublicAssociation> publicAssociations, Kind kind, String status) 
+    private List<PublicAssociation> filterPublicAssociations(List<PublicAssociation> publicAssociations, Kind kind, Statuse status) 
     {
+            
+        
         List<PublicAssociation> res_list = new ArrayList<>();
         for(PublicAssociation p : publicAssociations)
-        {
+        {   
             if(kind != null)
+            {
                 if(status == null)
                 {
-                    if(p.getKinds().contains(kind))
+                    Set<Kind> kinds = p.getKinds();
+                    for(Kind k : kinds)
+                    {
+                        if(k.getName().equals(kind.getName()))
+                            res_list.add(p);
+                    }
+                }
+                else if(p.getKinds().contains(kind) && p.getStatuses().contains(status))
+                {
+                    res_list.add(p);
+                }
+            }
+            else
+            {
+                Set<Statuse> statuses = p.getStatuses();
+                for(Statuse s : statuses)
+                {
+                    if(s.getName().equals(status.getName()))
                         res_list.add(p);
                 }
-                else if(p.getKinds().contains(kind) && p..contains(kind))
-                    
+            }   
         }
         return res_list;
+        
     }
     
 }

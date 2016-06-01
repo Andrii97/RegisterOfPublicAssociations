@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer>{
     Person findByName(String name);
+    Person findOneByName(String name);
 }

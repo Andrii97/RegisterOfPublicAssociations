@@ -142,7 +142,7 @@
                     <th width="120px">Реєстраційний номер запису в Єдиному реєстрі</th>
                     <th width="200px">Стан</th>
                     <th>Повне найменування (Скорочене найменування)</th>
-                    <th width="350px">Номер та дата видачі свідоцтва / дубліката свідоцтва</th>
+                    <!--th width="350px">Номер та дата видачі свідоцтва / дубліката свідоцтва</th-->
                     <th width="120px">Дата реєстрації</th>
                 </tr>
             </thead>
@@ -152,7 +152,7 @@
                         <td><c:out value="${publicAssociation.id}"/></td>
                         <td><c:out value="${publicAssociation.state}"/></td>
                         <td><c:out value="${publicAssociation.fullName}(${publicAssociation.shortName})"/></td>
-                        <td><!--c:out value="${publicAssociation.certificate.dateOfIssuingCertificate}; ${publicAssociation.certificate.id}"/--></td>
+                        
                         <td><c:out value="${publicAssociation.dateOfRegistration}"/></td>
                     </tr>
                 </c:forEach>

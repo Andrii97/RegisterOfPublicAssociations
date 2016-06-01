@@ -59,7 +59,7 @@ public class Statuse  implements java.io.Serializable {
         this.name = name;
     }
 
-@ManyToMany(fetch=FetchType.LAZY)
+@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="public_association_has_statuse", catalog="register_of_public_association", joinColumns = { 
         @JoinColumn(name="statuse_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="public_association_id", nullable=false, updatable=false) })

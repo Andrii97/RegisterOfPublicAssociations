@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-05-10 22:23:21
+Date: 2016-06-01 22:04:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,11 +24,12 @@ CREATE TABLE `admin` (
   `name` text CHARACTER SET utf8 NOT NULL,
   `password` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'Андрій', '1');
 
 -- ----------------------------
 -- Table structure for `all_records`
@@ -42,11 +43,24 @@ CREATE TABLE `all_records` (
   PRIMARY KEY (`id`),
   KEY `fk_all_records_admin_idx` (`admin_id`),
   CONSTRAINT `fk_all_records_admin` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of all_records
 -- ----------------------------
+INSERT INTO `all_records` VALUES ('1', '2016-05-20 10:19:23', 'Додано нову організацію', '1');
+INSERT INTO `all_records` VALUES ('2', '2016-05-20 10:20:34', 'Додано нову організацію', '1');
+INSERT INTO `all_records` VALUES ('3', '2016-05-20 11:38:50', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('4', '2016-05-20 13:34:07', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('5', '2016-05-20 13:36:56', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('6', '2016-05-20 14:03:29', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('7', '2016-05-20 14:04:41', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('8', '2016-05-20 14:15:33', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('9', '2016-05-20 14:29:12', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('10', '2016-05-20 15:27:01', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('11', '2016-05-20 15:28:25', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('12', '2016-05-20 15:32:53', 'Додано нову оранызацію', '1');
+INSERT INTO `all_records` VALUES ('13', '2016-05-20 15:42:02', 'Додано нову оранызацію', '1');
 
 -- ----------------------------
 -- Table structure for `cause`
@@ -108,10 +122,11 @@ CREATE TABLE `first_level_of_location` (
 -- ----------------------------
 -- Records of first_level_of_location
 -- ----------------------------
-INSERT INTO `first_level_of_location` VALUES ('1', 'Автономна Республіка Крим');
+INSERT INTO `first_level_of_location` VALUES ('1', 'АВТОНОМНА РЕСПУБЛІКА КРИМ/М.СІМФЕРОПОЛЬ');
 INSERT INTO `first_level_of_location` VALUES ('5', 'ВІННИЦЬКА ОБЛАСТЬ/М.ВІННИЦЯ');
-INSERT INTO `first_level_of_location` VALUES ('12', 'ДНІПРОПЕТРОВСЬКА ОБЛАСТЬ');
-INSERT INTO `first_level_of_location` VALUES ('14', 'ДОНЕЦЬКА ОБЛАСТЬ');
+INSERT INTO `first_level_of_location` VALUES ('7', 'ВОЛИНСЬКА ОБЛАСТЬ/М.ЛУЦЬК');
+INSERT INTO `first_level_of_location` VALUES ('12', 'ДНІПРОПЕТРОВСЬКА ОБЛАСТЬ/М.ДНІПРОПЕТРОВСЬК');
+INSERT INTO `first_level_of_location` VALUES ('14', 'ДОНЕЦЬКА ОБЛАСТЬ/М.ДОНЕЦЬК');
 INSERT INTO `first_level_of_location` VALUES ('18', 'ЖИТОМИРСЬКА ОБЛАСТЬ/М.ЖИТОМИР');
 INSERT INTO `first_level_of_location` VALUES ('21', 'ЗАКАРПАТСЬКА ОБЛАСТЬ/М.УЖГОРОД');
 INSERT INTO `first_level_of_location` VALUES ('23', 'ЗАПОРІЗЬКА ОБЛАСТЬ/М.ЗАПОРІЖЖЯ');
@@ -143,13 +158,14 @@ CREATE TABLE `form_of_incorporation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of form_of_incorporation
 -- ----------------------------
 INSERT INTO `form_of_incorporation` VALUES ('1', 'Громадська організація');
 INSERT INTO `form_of_incorporation` VALUES ('2', 'Громадська спілка');
+INSERT INTO `form_of_incorporation` VALUES ('3', 'Відокремлений підрозділ іноземної організації');
 
 -- ----------------------------
 -- Table structure for `fourth_level_of_location`
@@ -493,14 +509,16 @@ CREATE TABLE `kind` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of kind
 -- ----------------------------
 INSERT INTO `kind` VALUES ('1', 'Освітня або культурно-виховна');
 INSERT INTO `kind` VALUES ('2', 'Правозахисна');
-INSERT INTO `kind` VALUES ('3', 'Інша');
+INSERT INTO `kind` VALUES ('3', 'Фізкультурно-спортивна');
+INSERT INTO `kind` VALUES ('4', 'Молодіжна');
+INSERT INTO `kind` VALUES ('5', 'Інша');
 
 -- ----------------------------
 -- Table structure for `nationality`
@@ -510,11 +528,27 @@ CREATE TABLE `nationality` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of nationality
 -- ----------------------------
+INSERT INTO `nationality` VALUES ('1', 'українське');
+INSERT INTO `nationality` VALUES ('2', 'польське');
+INSERT INTO `nationality` VALUES ('3', 'російське');
+INSERT INTO `nationality` VALUES ('4', 'англійське');
+INSERT INTO `nationality` VALUES ('5', 'німецьке');
+INSERT INTO `nationality` VALUES ('6', 'японське');
+INSERT INTO `nationality` VALUES ('7', 'американське');
+INSERT INTO `nationality` VALUES ('8', 'італійське');
+INSERT INTO `nationality` VALUES ('9', 'болгарське');
+INSERT INTO `nationality` VALUES ('10', 'норвезьке');
+INSERT INTO `nationality` VALUES ('11', 'швецьке');
+INSERT INTO `nationality` VALUES ('12', 'австрійське');
+INSERT INTO `nationality` VALUES ('13', 'канадське');
+INSERT INTO `nationality` VALUES ('14', 'румунськке');
+INSERT INTO `nationality` VALUES ('15', 'шотландське');
+INSERT INTO `nationality` VALUES ('16', 'китайське');
 
 -- ----------------------------
 -- Table structure for `person`
@@ -530,11 +564,23 @@ CREATE TABLE `person` (
   PRIMARY KEY (`id`),
   KEY `fk_person_nationality1_idx` (`nationality_id`),
   CONSTRAINT `fk_person_nationality1` FOREIGN KEY (`nationality_id`) REFERENCES `nationality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of person
 -- ----------------------------
+INSERT INTO `person` VALUES ('2', 'Сергієнко Ярослав Степанович', null, null, null, '1');
+INSERT INTO `person` VALUES ('10', 'Іванченко Іван Володимирович', null, null, null, '1');
+INSERT INTO `person` VALUES ('15', 'Северін Андрій Іванович', 'ТТ', '23345', '04.09.1997', '1');
+INSERT INTO `person` VALUES ('19', 'Редін Кирило', '', '', '', '1');
+INSERT INTO `person` VALUES ('20', 'Северін Андрій Іванович', 'ТТ', '23345', '04.09.1997', '1');
+INSERT INTO `person` VALUES ('21', 'Редін Кирило', '', '', '', '1');
+INSERT INTO `person` VALUES ('22', 'Северін Андрій Іванович', 'ТТ', '23345', '04.09.1997', '1');
+INSERT INTO `person` VALUES ('23', 'Редін Кирило', '', '', '', '1');
+INSERT INTO `person` VALUES ('24', 'Северін Андрій Іванович', 'ТТ', '23345', '1997-09-04', '1');
+INSERT INTO `person` VALUES ('25', 'Редін Кирило', '', '', '', '1');
+INSERT INTO `person` VALUES ('26', 'Северін Андрій Іванович', 'ТТ', '23345', '1997-09-04', '1');
+INSERT INTO `person` VALUES ('27', 'Редін Кирило', '', '', '', '1');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -544,7 +590,7 @@ CREATE TABLE `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of post
@@ -560,6 +606,7 @@ INSERT INTO `post` VALUES ('8', 'член Правління');
 INSERT INTO `post` VALUES ('9', 'Керівник громадського об\'єднання');
 INSERT INTO `post` VALUES ('10', 'Голова');
 INSERT INTO `post` VALUES ('11', 'Керівник');
+INSERT INTO `post` VALUES ('12', 'Секретар');
 
 -- ----------------------------
 -- Table structure for `public_association`
@@ -591,15 +638,44 @@ CREATE TABLE `public_association` (
   KEY `fk_public_association_form_of_incorporation1_idx` (`form_of_incorporation_id`),
   CONSTRAINT `fk_public_association_certificate1` FOREIGN KEY (`certificate_id`) REFERENCES `certificate` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_public_association_form_of_incorporation1` FOREIGN KEY (`form_of_incorporation_id`) REFERENCES `form_of_incorporation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of public_association
 -- ----------------------------
-INSERT INTO `public_association` VALUES ('1', null, null, null, null, 'Нова організація', 'ГО \"НО\"', null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
-INSERT INTO `public_association` VALUES ('2', null, null, null, null, 'Організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '0', '0', '0', '0');
-INSERT INTO `public_association` VALUES ('3', null, null, null, null, 'ГО Нова організація', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
-INSERT INTO `public_association` VALUES ('4', null, null, null, null, 'ГО Нова організація', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('1', '2016-05-20 14:57:38', null, '2016-05-20 14:57:38', null, 'Нова організація', 'ГО \"НО\"', null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('2', null, null, null, null, 'Організація1', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('3', '2016-05-20 17:24:06', null, '2016-05-20 17:24:06', null, 'ГО Новітні винаходи', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('4', '2016-05-21 11:24:06', null, '2016-05-21 11:24:06', null, 'ГО Нова організація', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('5', null, null, null, null, 'Організація2', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '3', '4', '5', '5');
+INSERT INTO `public_association` VALUES ('6', null, null, null, null, 'Організація3', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '3', '4', '5', '5');
+INSERT INTO `public_association` VALUES ('7', null, null, null, null, 'Організація4', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '3', '4', '5', '5');
+INSERT INTO `public_association` VALUES ('8', null, null, '2016-06-01 22:02:44', null, 'Організація', null, null, null, null, null, null, 'Зареєстровано', null, null, '1', '3', '4', '5', '5');
+INSERT INTO `public_association` VALUES ('17', null, null, null, null, 'Нова ', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('38', '2016-05-27 02:05:29', null, null, null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('39', '2016-05-27 02:05:31', null, null, null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('43', '2016-05-28 23:13:54', null, null, null, 'Громадська організація \"Молодіжний футбольний клуб \"Локомотив - Чоп\"', 'ГО \"МФК \"Локомотив - Чоп\"', '', null, null, null, 'Підтримка МФК \"Локомотив - Чоп\"', 'Зареєстровано', 'Закарпатська обл., м.Чоп, вул. Миру, буд. 21', null, '1', '21', '110', '0', '0');
+INSERT INTO `public_association` VALUES ('44', '2016-05-28 23:31:56', null, null, null, 'Незалежна професійна спілка \"Крок\"', 'НПС \"Крок\"', '', null, null, null, '', 'Зареєстровано', 'Закарпатська обл., м. Чоп, вул. Берег, 95', null, '1', '21', '110', '0', '0');
+INSERT INTO `public_association` VALUES ('45', '2016-05-29 14:57:38', null, null, null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '1', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('46', '2016-05-29 15:02:28', null, null, null, 'Організація  діаспора українців', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '1', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('47', '2016-05-29 15:05:14', null, null, null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '80', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('48', '2016-05-29 16:08:30', null, null, null, 'Сучасні письменники', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('49', '2016-05-29 16:48:01', null, '2016-05-29 16:48:01', null, 'Громадська огранізація \"Сучасна книга\"', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '1', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('50', '2016-05-30 11:24:06', null, '2016-05-30 11:24:06', null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('51', '2016-05-30 11:24:08', null, '2016-05-30 11:24:08', null, 'Спілка молодих письменників', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('52', '2016-05-30 15:46:21', null, '2016-05-30 15:46:21', null, 'Сучасна освіта', '', '', null, null, null, '', 'Зареєстровано', '', null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('53', '2016-05-30 16:14:54', null, '2016-05-30 16:14:54', null, 'Нова громадська організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('54', '2016-05-30 16:14:56', null, '2016-05-30 16:14:56', null, 'Клуб освітян', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '1', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('55', '2016-05-30 17:09:13', null, '2016-05-30 17:09:13', null, 'Громадська організація футбольний клуб Волинь Луцьк', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('56', '2016-05-30 17:09:16', null, '2016-05-30 17:09:16', null, 'Нова організація', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('57', '2016-05-31 15:16:08', null, '2016-05-31 15:16:08', null, 'Японська культура', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '80', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('58', '2016-05-31 15:16:10', null, '2016-05-31 15:16:10', null, 'Громадська організація \"Європейська Україна\"', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('59', '2016-05-31 20:02:44', null, '2016-05-31 20:02:44', null, 'Громадська організація \"Китайська кухня\"', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '80', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('60', '2016-05-31 20:02:44', null, '2016-05-31 20:02:44', null, 'Клуб професійних шахістів', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('61', '2016-06-01 04:10:22', null, '2016-06-01 04:10:22', null, 'Громадська організація \"Автошкола №3\"', null, null, null, null, null, null, 'Незареєстровано', null, null, '1', '0', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('62', '2016-06-01 04:19:09', null, '2016-06-01 04:19:09', null, 'Громадська організація \"Мода\"', null, null, null, null, null, null, 'Незареєстровано', null, null, '2', '80', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('67', '2016-06-01 10:20:51', null, '2016-06-01 10:20:51', null, 'Вінницькі урядовці', 'ГО ', 'Public Association', null, null, null, '', 'Незареєстровано', '', null, '1', '1', '0', '0', '0');
+INSERT INTO `public_association` VALUES ('68', '2016-06-01 10:40:54', null, '2016-06-01 10:40:54', null, 'Юні КПІшники', '', '', null, null, null, '', 'Зареєстровано', '', null, '1', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `public_association_has_kind`
@@ -618,6 +694,10 @@ CREATE TABLE `public_association_has_kind` (
 -- ----------------------------
 -- Records of public_association_has_kind
 -- ----------------------------
+INSERT INTO `public_association_has_kind` VALUES ('1', '2');
+INSERT INTO `public_association_has_kind` VALUES ('8', '2');
+INSERT INTO `public_association_has_kind` VALUES ('44', '3');
+INSERT INTO `public_association_has_kind` VALUES ('67', '5');
 
 -- ----------------------------
 -- Table structure for `public_association_has_person`
@@ -640,6 +720,10 @@ CREATE TABLE `public_association_has_person` (
 -- ----------------------------
 -- Records of public_association_has_person
 -- ----------------------------
+INSERT INTO `public_association_has_person` VALUES ('17', '10', '12', null);
+INSERT INTO `public_association_has_person` VALUES ('43', '19', '8', null);
+INSERT INTO `public_association_has_person` VALUES ('52', '2', '1', null);
+INSERT INTO `public_association_has_person` VALUES ('67', '2', '9', null);
 
 -- ----------------------------
 -- Table structure for `public_association_has_statuse`
@@ -658,6 +742,8 @@ CREATE TABLE `public_association_has_statuse` (
 -- ----------------------------
 -- Records of public_association_has_statuse
 -- ----------------------------
+INSERT INTO `public_association_has_statuse` VALUES ('68', '4');
+INSERT INTO `public_association_has_statuse` VALUES ('44', '5');
 
 -- ----------------------------
 -- Table structure for `second_level_of_location`
@@ -1375,11 +1461,23 @@ CREATE TABLE `symbolic` (
   KEY `fk_symbolic_public_association1_idx` (`public_association_id`),
   CONSTRAINT `fk_symbolic_public_association1` FOREIGN KEY (`public_association_id`) REFERENCES `public_association` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_symbolic_type_of_symbolic1` FOREIGN KEY (`type_of_symbolic_id`) REFERENCES `type_of_symbolic` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of symbolic
 -- ----------------------------
+INSERT INTO `symbolic` VALUES ('1', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('2', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('3', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('4', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('5', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('6', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('7', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('8', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('9', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('10', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('11', null, null, null, '2', '8');
+INSERT INTO `symbolic` VALUES ('12', null, null, null, '2', '8');
 
 -- ----------------------------
 -- Table structure for `termination_of_activity`
@@ -1396,6 +1494,10 @@ CREATE TABLE `termination_of_activity` (
 -- ----------------------------
 -- Records of termination_of_activity
 -- ----------------------------
+INSERT INTO `termination_of_activity` VALUES ('2', 'Рішення суду', '2016-05-20 11:38:13');
+INSERT INTO `termination_of_activity` VALUES ('5', 'Рішення суду', null);
+INSERT INTO `termination_of_activity` VALUES ('6', 'Рішення суду', '2016-05-20 14:29:14');
+INSERT INTO `termination_of_activity` VALUES ('7', 'Рішення суду', '2016-05-20 14:23:39');
 
 -- ----------------------------
 -- Table structure for `third_level_of_location`
@@ -2276,11 +2378,14 @@ CREATE TABLE `type_of_symbolic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of type_of_symbolic
 -- ----------------------------
+INSERT INTO `type_of_symbolic` VALUES ('1', 'прапор');
+INSERT INTO `type_of_symbolic` VALUES ('2', 'емблема');
+INSERT INTO `type_of_symbolic` VALUES ('3', 'герб');
 
 -- ----------------------------
 -- Table structure for `unit_of_public_association`

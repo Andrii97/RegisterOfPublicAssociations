@@ -336,7 +336,7 @@ public class PublicAssociation  implements java.io.Serializable {
         this.symbolics = symbolics;
     }
 
-@ManyToMany(fetch=FetchType.LAZY)
+@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="public_association_has_statuse", catalog="register_of_public_association", joinColumns = { 
         @JoinColumn(name="public_association_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="statuse_id", nullable=false, updatable=false) })
